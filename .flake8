@@ -1,0 +1,15 @@
+[flake8]
+ignore = C101,D403,W503
+exclude =
+    **/migrations/*,
+    **/apps.py,
+    **/middleware/custom_csp.py,
+    **/middleware/current_request.py,
+    .git,
+    .mypy_cache,
+    __pycache__,
+    venv
+filename = *.py
+accept-encodings = utf-8
+max-complexity = 12
+max-line-length = 119
