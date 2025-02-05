@@ -1,5 +1,5 @@
 [flake8]
-ignore = C101,D403,W503
+ignore = C101,D403,W503,W191
 exclude =
     **/migrations/*,
     **/apps.py,
