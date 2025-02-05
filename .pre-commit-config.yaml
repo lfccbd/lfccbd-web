@@ -1,4 +1,9 @@
 repos:
+    - repo: https://github.com/astral-sh/ruff-pre-commit
+      rev: v0.9.4
+      hooks:
+          - id: ruff
+
     - repo: https://github.com/pycqa/isort
       rev: 6.0.0
       hooks:
@@ -24,10 +29,10 @@ repos:
       rev: "v1.14.1"
       hooks:
           - id: mypy
-            additional_dependencies: [types-requests, types-PyYAML, types-toml]
+            additional_dependencies: [types-requests, types-PyYAML, types-toml, types-cryptography]
 
-    - repo: https://github.com/psf/black
-      rev: 25.1.0
+    - repo: https://github.com/pre-commit/mirrors-prettier
+      rev: "v4.0.0-alpha.8"
       hooks:
-          - id: black
-            additional_dependencies: [toml]
+          - id: prettier
+            types_or: [html, css, javascript]
