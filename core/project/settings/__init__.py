@@ -28,15 +28,15 @@ MAINTENANCE_MODE = ENV.config('MAINTENANCE_MODE', cast=bool)
 
 # Include the base settings file
 include(
-    'base.py',
-    'utils_config.py',
-    'general_security.py',
-    'admin_template_config.py',
-    'api.py',
+	'base.py',
+	'utils_config.py',
+	'general_security.py',
+	'admin_template_config.py',
+	'api.py',
 )
 
 # Include the environment-specific settings file based on the environment
 if config('DJANGO_ENV') == 'Development' and DEBUG:
-    include('development.py')
+	include('development.py')
 elif config('DJANGO_ENV') == 'Production':
-    include('production.py')
+	include('production.py')

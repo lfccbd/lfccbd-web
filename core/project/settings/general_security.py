@@ -23,26 +23,26 @@ DEFENDER_BEHIND_REVERSE_PROXY = ENV.config('DEFENDER_BEHIND_REVERSE_PROXY', cast
 # CSP Settings
 CSP_DEFAULT_SRC = ("'none'",)
 CSP_SCRIPT_SRC = (
-    "'self'",
-    'https://www.google.com',
-    'https://googleapis.com',
-    'https://www.googletagmanager.com',
-    'https://www.gstatic.com',
-    'https://fonts.googleapis.com',
-    'https://use.fontawesome.com',
-    'https://ajax.googleapis.com',
-    "'unsafe-inline'",
-    'blob:',
+	"'self'",
+	'https://www.google.com',
+	'https://googleapis.com',
+	'https://www.googletagmanager.com',
+	'https://www.gstatic.com',
+	'https://fonts.googleapis.com',
+	'https://use.fontawesome.com',
+	'https://ajax.googleapis.com',
+	"'unsafe-inline'",
+	'blob:',
 )  # noqa: E501
 CSP_CONNECT_SRC = "'self'"
 CSP_FONT_SRC = ("'self'", 'https://fonts.gstatic.com', 'https://fonts.googleapis.com', 'https://use.fontawesome.com')
 CSP_STYLE_SRC = ("'self'", "'unsafe-inline'")
 CSP_STYLE_SRC_ELEM = (
-    "'self'",
-    'https://fonts.gstatic.com',
-    'https://fonts.googleapis.com',
-    'https://use.fontawesome.com',
-    "'unsafe-inline'",
+	"'self'",
+	'https://fonts.gstatic.com',
+	'https://fonts.googleapis.com',
+	'https://use.fontawesome.com',
+	"'unsafe-inline'",
 )  # noqa: E501
 CSP_IMG_SRC = ("'self'", 'https://validator.swagger.io/', 'blob:', 'data:')
 CSP_MEDIA_SRC = ("'self'",)

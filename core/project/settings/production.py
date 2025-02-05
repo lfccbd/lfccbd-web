@@ -12,17 +12,17 @@ DEBUG = DEBUG
 
 # Database
 DATABASES = {
-    'default': {
-        'ENGINE': ENV.config('ENGINE'),
-        'NAME': ENV.config('NAME'),
-        'HOST': ENV.config('HOST'),
-        'USER': ENV.config('USER'),
-        'PASSWORD': ENV.config('PASSWORD'),
-        'PORT': ENV.config('PORT'),
-        'OPTIONS': {
-            'sslmode': 'require',
-        },
-    }
+	'default': {
+		'ENGINE': ENV.config('ENGINE'),
+		'NAME': ENV.config('NAME'),
+		'HOST': ENV.config('HOST'),
+		'USER': ENV.config('USER'),
+		'PASSWORD': ENV.config('PASSWORD'),
+		'PORT': ENV.config('PORT'),
+		'OPTIONS': {
+			'sslmode': 'require',
+		},
+	}
 }
 
 # Cors
