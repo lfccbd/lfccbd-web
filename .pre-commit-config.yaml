@@ -23,7 +23,6 @@ repos:
                 - flake8-string-format
                 - flake8-print
                 - flake8-bandit
-                - flake8-unused-arguments
 
     - repo: https://github.com/pre-commit/mirrors-mypy
       rev: "v1.14.1"
