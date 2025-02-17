@@ -21,8 +21,6 @@ django-defender = "^0.9.8"
 django-auto-logout = "^0.5.1"
 django-csp = "^3.8"
 django-simple-history = "^3.8.0"
-drf-yasg = "^1.21.8"
-django-filter = "^24.3"
 django-autoslug = "^1.9.9"
 jinja2 = "^3.1.5"
 model-bakery = "^1.20.1"
@@ -33,6 +31,8 @@ gunicorn = "^23.0.0"
 django-recaptcha = "^4.0.0"
 nh3 = "^0.2.20"
 django-daisy = "^1.0.9"
+pillow = "^11.1.0"
+django-prose-editor = "^0.10.3"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -72,6 +72,7 @@ exclude = [
     ".ruff_cache",
     ".venv",
     ".vscode",
+    "node_modules",
     "__pypackages__",
     "_build",
     "buck-out",
