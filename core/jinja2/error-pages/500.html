@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+<!-- Fonts -->
+{% block fonts %}
+  {{super()}}
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+{% endblock fonts %}
+
+
+{% block pageContent %}
+    <!-- Testimonies Section -->
+    <section id="testimonies" class="testimonies section">
+        <div class="container">
+
+            <div class="row">
+                <div class="col text-center px-lg-5">
+                    <h1>SERVER ERROR</h1>
+                    <p class="px-lg-5" style="margin-top: 30px;">
+                        Try refreshing the page or visit some other time.
+                    </p>
+                    <br>
+                    <a href="{{url('home')}}" class="btn-share-testimony mt-5">Home</a>        
+                </div> 
+            </div>
+        </div>
+    </section>
+    <br><br><br>
+{% endblock pageContent %}
