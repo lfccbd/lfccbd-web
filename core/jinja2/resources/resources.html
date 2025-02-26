@@ -1,0 +1,528 @@
+{% extends 'base.html' %}
+
+{# import testimony macro #}
+{% from 'macros/__audioplayer.html' import audiomodal as audiomodelmacro %}
+{% from 'macros/__videoplayer.html' import videomodal as videomodalmacro %}
+{% from 'macros/__bookmodel.html' import bookmodal as bookmodalmacro %}
+
+{# override meta block #}
+{% block pageMeta %}
+    <title>Media Resources - Winners Chapel JHB CBD</title>
+    <meta name="description"
+        content="Winners JHB CBD provides a variety of downloadable media resources to support spiritual growth.These include audio sermons, teachings, and video messages from our services. All resources are accessible to members and visitors alike. Simply browse through the available media, select your desired content, and download it for personal use. We encourage you to engage with these teachings as they are a source spiritual empowerment.">
+    <meta name="keywords"
+        content="liviing faith church, liviing faith church cbd, liviing faith church johannesburg, liviing faith church south africa, lfc johannesburg, lfc cbd, winners chapel, winners chapel cbd, winners chapel cbd jhb, bishop david oyedepo, conatct us, sermons, messages, faith tarbanacle">
+{% endblock pageMeta %}
+
+
+{# fonts block override #}
+{% block fonts %}
+    {{super()}}
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+{% endblock fonts %}
+
+{# vendorStyle block override #}
+{% block vendorStyle %}
+    {{super()}}
+    <link href="{{ static('assets/vendor/video.js-7.21.1/video-js.css') }}" rel="stylesheet">
+{% endblock vendorStyle %}
+
+{# pageContent block override #}
+{% block pageContent %}
+
+    <section id="ministries" class="ministries resources section">
+        <div class="container">
+
+            <div class="row">
+                <div class="col text-center px-lg-5">
+                    <img src="{{ static('assets/img/logo-red.png') }}" class="img-fluid mb-3" alt="">
+                    <h1>RESOURCES</h1>
+                    <p class="px-lg-5 mx-lg-5 mt-3">
+                        Winners JHB CBD provides a variety of downloadable media resources to support spiritual growth. 
+                        These include audio sermons, teachings, and video messages from our services. All resources are accessible 
+                        to members and visitors alike. Simply browse through the available media, select your desired content, 
+                        and download it for personal use. We encourage you to engage with these teachings as they are a 
+                        source spiritual empowerment.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <ul class="nav nav-tabs justify-content-center border-0 mt-4" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="tab1" data-bs-toggle="tab" data-bs-target="#tab1-pane"
+                                type="button" role="tab" aria-controls="tab1-pabe" aria-selected="true">Sermons</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tab2" data-bs-toggle="tab" data-bs-target="#tab2-pane"
+                                type="button" role="tab" aria-controls="tab2-pane" aria-selected="false">Books</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="tab1-pane" role="tabpanel" aria-labelledby="tab1"
+                            tabindex="0">
+
+                            <div class="row">
+                                <div class="col-md-8 offset-md-2">
+                                    <form action="#" method="get">
+                                        <div class="search-form">
+                                            <input type="text" name="search" placeholder="Search">
+                                            <input type="text" name="section" placeholder="Search" value="sermons" disabled style="display: none;">
+                                            <button type="submit" class="btn"><img src="{{ static('assets/img/icon-search.png') }}"></button>
+                                        </div>
+                                       
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="row g-3 mt-3">
+                                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="quick-link">
+                                        <a href="/resources/?search=One+Night+With+the+King&section=sermons">
+                                            <img src="{{ static('assets/img/quick-links/5.jpg') }}" class="img-fluid" alt="">
+                                            <span>One Night With the King</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="quick-link">
+                                        <a href="/resources/?search=Mid+week+Services&section=sermons">
+                                            <img src="{{ static('assets/img/search-2.png') }}" class="img-fluid" alt="">
+                                            <span>Mid-week Services</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="quick-link">
+                                        <a href="/resources/?search=Sunday+Services&section=sermons">
+                                            <img src="{{ static('assets/img/search-3.png') }}" class="img-fluid" alt="">
+                                            <span>Sunday Services</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="quick-link">
+                                        <a href="/resources/?search=Youth+Alive&section=sermons">
+                                            <img src="{{ static('assets/img/search-4.png') }}" class="img-fluid" alt="">
+                                            <span>Youth Alive</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-5">
+                                <div class="col">
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless">
+                                            {% for media in media_page_obj if media_page_obj %}
+                                                <tr>
+                                                    <td>
+                                                        <div class="result">
+                                                            <div><img src="{{ static('assets/img/logo-red-small.png') }}"
+                                                                    class="me-2" alt="">
+                                                                {{ media.file_title|truncate(29, true)}}
+                                                            </div>
+                                                            <div>{{media.service|truncate(29, true)}}</div>
+                                                            <div>{{media.message_date.strftime('%d-%m-%y')}}</div>
+                                                            {% if media.media_format == 'Video' or media.media_format == 'Audio' %}
+                                                                <div>{{media.resource_file.name|media_duration}}</div>
+                                                            {% else %}
+                                                                <div>Document File</div>
+                                                            {% endif %}
+                                                            <div>
+                                                                {% if media.media_format == 'Video' or media.media_format == 'Audio' %}
+                                                                    <button type="button" class="btn btn-play me-2"
+                                                                        data-bs-toggle="modal" data-bs-target="#{{media.id}}">
+                                                                        <img src="{{ static('assets/img/play.svg') }}"
+                                                                            class="img-fluid">
+                                                                    </button>
+                                                                {% endif %}
+                                                                {##}
+                                                                {% set media_length = media.resource_file.name.split('/')[media.resource_file.name.split('/')|length -1 ] %}
+                                                                <a href="{{media.resource_file.url}}" download="{{media_length}}" target="_blank" class="btn btn-download">
+                                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M11.3333 11.3333H11.34M11.6 9.33332H12C12.6213 9.33332 12.9319 9.33332 13.1769 9.43482C13.5036 9.57014 13.7632 9.82971 13.8985 10.1564C14 10.4014 14 10.7121 14 11.3333C14 11.9546 14 12.2652 13.8985 12.5102C13.7632 12.8369 13.5036 13.0965 13.1769 13.2318C12.9319 13.3333 12.6213 13.3333 12 13.3333H4C3.37874 13.3333 3.06812 13.3333 2.82309 13.2318C2.49638 13.0965 2.23682 12.8369 2.10149 12.5102C2 12.2652 2 11.9546 2 11.3333C2 10.7121 2 10.4014 2.10149 10.1564C2.23682 9.82971 2.49638 9.57014 2.82309 9.43482C3.06812 9.33332 3.37874 9.33332 4 9.33332H4.4M8 9.99999V2.66666M8 9.99999L6 7.99999M8 9.99999L10 7.99999"
+                                                                            stroke="currentColor" stroke-width="1.5"
+                                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <td>
+                                                        <div class="result">
+                                                            <div><img src="{{ static('assets/img/logo-red-small.png') }}"
+                                                                    class="me-2" alt="">
+                                                                No Recent Media Resources Found
+                                                            </div>
+                                                            <div>Winners Chapel JHB CBD</div>
+                                                            <div>{% now "d-m-y" %}</div>
+                                                            <div>{% now "H:i:s" %}</div>
+                                                            <div>
+                                                                <a type="button" class="btn btn-download">
+                                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M11.3333 11.3333H11.34M11.6 9.33332H12C12.6213 9.33332 12.9319 9.33332 13.1769 9.43482C13.5036 9.57014 13.7632 9.82971 13.8985 10.1564C14 10.4014 14 10.7121 14 11.3333C14 11.9546 14 12.2652 13.8985 12.5102C13.7632 12.8369 13.5036 13.0965 13.1769 13.2318C12.9319 13.3333 12.6213 13.3333 12 13.3333H4C3.37874 13.3333 3.06812 13.3333 2.82309 13.2318C2.49638 13.0965 2.23682 12.8369 2.10149 12.5102C2 12.2652 2 11.9546 2 11.3333C2 10.7121 2 10.4014 2.10149 10.1564C2.23682 9.82971 2.49638 9.57014 2.82309 9.43482C3.06812 9.33332 3.37874 9.33332 4 9.33332H4.4M8 9.99999V2.66666M8 9.99999L6 7.99999M8 9.99999L10 7.99999"
+                                                                            stroke="currentColor" stroke-width="1.5"
+                                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            {# pagination using only jinja, no js #}
+                            {% if media_page_obj %}
+                                <nav aria-label="..." class="mt-4">
+                                    <ul class="pagination">
+                                        {# init total pages #}
+                                        {% set pagesNum = book_page_obj.paginator.page_range|count + 1 %}
+                                        {# init total items in the pagination #}
+                                        {% set totalItems = book_page_obj.paginator.count %}
+                                        {# init start number for the pagination range #}
+                                        {% set starterCount = 1 %}
+                                        {# init current page in the pagination #}
+                                        {% set currentPage = book_page_obj.number  %}
+                                        {# number of items to show in page per time #}
+                                        {% set controller = 4 %}
+                                        {# set the range of the pagination per time#}
+                                        {% set numberRange = totalItems %}
+
+                                        {# set left navigation link #}
+                                        {% set previous_pagination_link = "" %}
+                                        {% if book_page_obj.number - 1  >  0 %}
+                                            {% set previous_pagination_link = previous_pagination_link + "?media_page=" + (currentPage - 1)|string %}
+                                        {% else %}
+                                            {% set previous_pagination_link = previous_pagination_link + "#" %}
+                                        {% endif %}
+
+                                        {# check if the current page is greater than the controller, if true,
+                                            increase the number range by the total item plus 1 since a range 
+                                            will stop at one shy in a loop and then set starter count to the
+                                            current page minus 2 so that next page will start at 2 for instance
+                                        #}
+
+                                        {% if currentPage > controller  %}
+                                            {% set numberRange = totalItems + 1 %}
+                                            {% set starterCount = currentPage - 4 %}
+                                        {% else %}
+                                            {% set numberRange = 6 %}
+                                        {% endif %}
+
+                                        {# page numbers to show #}
+                                        {% if (pagesNum - numberRange - 1)  > 0 %}
+                                            {% set numberRange = numberRange + (pagesNum - numberRange - 1) %}
+                                        {% endif  %}
+                                        {% if currentPage < pagesNum-1 and currentPage > 4 %}
+                                            {% if (pagesNum - currentPage) >= 1 %}
+                                                {% set starterCount = currentPage - 2 %}                                                  
+                                            {% endif  %}
+                                        {% elif currentPage+2 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 2 > 0 %}
+                                            {% set starterCount = currentPage - 2 %}
+                                        {% elif currentPage+1 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 1 > 0 %}
+                                            {% set starterCount = currentPage - 1 %}
+                                        {% endif %}
+
+                                        <li class="page-item d-none"><a href="{{previous_pagination_link}}" class="page-link">Previous</a></li>
+                                        
+                                        {# loop and set the numbering #}
+                                        {% for k in range(starterCount, numberRange) %}
+                                            {% if k <= pagesNum  %}
+                                                {# add the activate style for current page #}
+                                                {% if currentPage==k %} 
+                                                    <li class="page-item active"><a class="page-link" href="?media_page={{k}}">{{k}}</a></li>
+                                                    {% if not loop.first %}
+                                                        {% set starterCount = starterCount + 1 %}
+                                                        {% set numberRange = numberRange + 1 %}
+                                                    {% endif %}
+                                                {% elif loop.index <  pagesNum and k - 4 < starterCount %}
+                                                    <li class="page-item"><a class="page-link" href="?media_page={{k}}">{{k}}</a></li>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        {# check if there is still more pages to show #}
+                                        {% set pageLeft = (pagesNum - 1) - currentPage %}
+                                        {% if  pageLeft > 1 and pagesNum-1 > 4 %}
+                                            <li class="page-item"><a class="page-link" href="#" style="display: inline-block;">...</a></li>
+                                        {% endif %} 
+                                        
+                                        {# set right navigation button #}
+                                        {% set next_pagination_link = "" %}
+                                        {% if currentPage + 1  <  pagesNum %}
+                                            {% set next_pagination_link = next_pagination_link + "?media_page=" + (currentPage + 1)|string %}
+                                        {% else %}
+                                            {% set next_pagination_link = next_pagination_link + "#" %}
+                                        {% endif %}
+
+                                        <li class="page-item"><a class="page-link" href="{{next_pagination_link}}">Next</a></li>
+                                    </ul>
+                                </nav>
+                            {% endif %}
+                        </div>
+
+                        <div class="tab-pane fade" id="tab2-pane" role="tabpanel" aria-labelledby="tab2" tabindex="0">
+                            <div class="row">
+                                <div class="col-md-8 offset-md-2">
+                                    <form action="#" method="get">
+                                        <div class="search-form">
+                                            <input type="text" name="search" placeholder="Search">
+                                            <input type="text" name="section" placeholder="Search" value="books" disabled style="display: none;">
+                                            <button type="submit" class="btn"><img src="{{ static('assets/img/icon-search.png') }}"></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="swiper init-swiper">
+                                <script type="application/json" class="swiper-config">
+                                        {
+                                            "loop": true,
+                                            "speed": 600,
+                                            "autoplay": {
+                                                "delay": 5000
+                                            },
+                                            "slidesPerView": "auto",
+                                            "navigation": {
+                                                "nextEl": ".swiper-button-next",
+                                                "prevEl": ".swiper-button-prev"
+                                            },
+                                            "pagination": {
+                                                "el": ".swiper-pagination",
+                                                "type": "bullets",
+                                                "clickable": true
+                                            },
+                                            "breakpoints": {
+                                                "320": {
+                                                    "slidesPerView": 1,
+                                                    "spaceBetween": 40
+                                                },
+                                                "576": {
+                                                    "slidesPerView": 2,
+                                                    "spaceBetween": 40
+                                                },
+                                                "1200": {
+                                                    "slidesPerView": 4,
+                                                    "spaceBetween": 10
+                                                }
+                                            }
+                                        }
+                                    </script>
+
+                                <div class="swiper-wrapper align-items-end" data-aos="fade-up" data-aos-delay="100">
+
+                                    <div class="swiper-slide">
+                                        <div class="quick-link">
+                                            <a href="/resources/?search=Divine+Healing&section=books">
+                                                <img src="{{ static('assets/img/m1.png') }}" class="img-fluid" alt="">
+                                                <span>Divine Healing</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="quick-link">
+                                            <a href="/resources/?search=Kingdom+Service&section=books">
+                                                <img src="{{ static('assets/img/search-2.png') }}" class="img-fluid" alt="">
+                                                <span>Kingdom Service</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="quick-link">
+                                            <a href="/resources/?search=Holiness&section=books">
+                                                <img src="{{ static('assets/img/quick-links/5.jpg') }}" class="img-fluid" alt="">
+                                                <span>Holiness</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="quick-link">
+                                            <a href="/resources/?search=Salvation&section=books">
+                                                <img src="{{ static('assets/img/search-4.png') }}" class="img-fluid" alt="">
+                                                <span>Salvation</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="quick-link">
+                                            <a href="">
+                                                <img src="{{ static('assets/img/search-2.png') }}" class="img-fluid" alt="">
+                                                <span>Evangelism</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="swiper-button-prev"></div> -->
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+
+                            <div class="row g-3 products-list mt-5">
+                                {% for book in book_page_obj if book_page_obj %}
+                                <div class="col-lg-3">
+                                    <a href="#" class="text-center" data-bs-toggle="modal" data-bs-target="#{{book.id}}">
+                                        <div class="product-item h-100">
+                                            <img src="{{ book.featured_image.url }}" class="img-fluid" alt="">
+                                            <h4>{{ book.file_title }}</h4>
+                                        </div>
+                                    </a>
+                                </div>
+                                {% else %}
+                                <div class="col-lg-3">
+                                    <a href="#" class="text-center" data-bs-toggle="modal" data-bs-target="#productDetail">
+                                        <div class="product-item h-100">
+                                            <img src="{{ static('assets/img/products/book-2.png') }}" class="img-fluid"
+                                                alt="">
+                                            <h4>No Recent Publication Listings Found</h4>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                {% endfor %}
+                            </div>
+        
+                            {# pagination using only jinja, no js #}
+                            {% if book_is_paginated %}
+                                <nav aria-label="..." class="mt-5">
+                                    <ul class="pagination justify-content-center">
+                                        {# init total pages #}
+                                        {% set pagesNum = book_page_obj.paginator.page_range|count + 1 %}
+                                        {# init total items in the pagination #}
+                                        {% set totalItems = book_page_obj.paginator.count %}
+                                        {# init start number for the pagination range #}
+                                        {% set starterCount = 1 %}
+                                        {# init current page in the pagination #}
+                                        {% set currentPage = book_page_obj.number  %}
+                                        {# number of items to show in page per time #}
+                                        {% set controller = 4 %}
+                                        {# set the range of the pagination per time#}
+                                        {% set numberRange = totalItems %}
+
+                                        {# set left navigation link #}
+                                        {% set previous_pagination_link = "" %}
+                                        {% if book_page_obj.number - 1  >  0 %}
+                                            {% set previous_pagination_link = previous_pagination_link + "?book_page=" + (currentPage - 1)|string %}
+                                        {% else %}
+                                            {% set previous_pagination_link = previous_pagination_link + "#" %}
+                                        {% endif %}
+
+                                        {# check if the current page is greater than the controller, if true,
+                                            increase the number range by the total item plus 1 since a range 
+                                            will stop at one shy in a loop and then set starter count to the
+                                            current page minus 2 so that next page will start at 2 for instance
+                                        #}
+
+                                        {% if currentPage > controller  %}
+                                            {% set numberRange = totalItems + 1 %}
+                                            {% set starterCount = currentPage - 4 %}
+                                        {% else %}
+                                            {% set numberRange = 6 %}
+                                        {% endif %}
+
+                                        {# page numbers to show #}
+                                        {% if (pagesNum - numberRange - 1)  > 0 %}
+                                            {% set numberRange = numberRange + (pagesNum - numberRange - 1) %}
+                                        {% endif  %}
+                                        {% if currentPage < pagesNum-1 and currentPage > 4 %}
+                                            {% if (pagesNum - currentPage) >= 1 %}
+                                                {% set starterCount = currentPage - 2 %}                                                  
+                                            {% endif  %}
+                                        {% elif currentPage+2 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 2 > 0 %}
+                                            {% set starterCount = currentPage - 2 %}
+                                        {% elif currentPage+1 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 1 > 0 %}
+                                            {% set starterCount = currentPage - 1 %}
+                                        {% endif %}
+
+                                        <li class="page-item d-none"><a href="{{previous_pagination_link}}" class="page-link">Previous</a></li>
+                                        
+                                        {# loop and set the numbering #}
+                                        {% for k in range(starterCount, numberRange) %}
+                                            {% if k <= pagesNum  %}
+                                                {# add the activate style for current page #}
+                                                {% if currentPage==k %} 
+                                                    <li class="page-item active"><a class="page-link" href="?book_page={{k}}">{{k}}</a></li>
+                                                    {% if not loop.first %}
+                                                        {% set starterCount = starterCount + 1 %}
+                                                        {% set numberRange = numberRange + 1 %}
+                                                    {% endif %}
+                                                {% elif loop.index <  pagesNum and k - 4 < starterCount %}
+                                                    <li class="page-item"><a class="page-link" href="?book_page={{k}}">{{k}}</a></li>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        {# check if there is still more pages to show #}
+                                        {% set pageLeft = (pagesNum - 1) - currentPage %}
+                                        {% if  pageLeft > 1 and pagesNum-1 > 4 %}
+                                            <li class="page-item"><a class="page-link" href="#" style="display: inline-block;">...</a></li>
+                                        {% endif %} 
+                                        
+                                        {# set right navigation button #}
+                                        {% set next_pagination_link = "" %}
+                                        {% if currentPage + 1  <  pagesNum %}
+                                            {% set next_pagination_link = next_pagination_link + "?book_page=" + (currentPage + 1)|string %}
+                                        {% else %}
+                                            {% set next_pagination_link = next_pagination_link + "#" %}
+                                        {% endif %}
+
+                                        <li class="page-item"><a class="page-link" href="{{next_pagination_link}}">Next</a></li>
+                                    </ul>
+                                </nav>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Modal -->
+    {% for mediamodal in media_page_obj if media_page_obj %}
+       {% if mediamodal.media_format == "Audio" %}
+            {{audiomodalmacro(mediamodal.id, mediamodal.file_title, mediamodal.service, mediamodal.message_date.strftime('%d-%m-%y'), mediamodal.resource_file.url)}} 
+        {% elif mediamodal.media_format == "Video" %}
+            {{videomodalmacro(mediamodal.id, mediamodal.file_title, mediamodal.service, mediamodal.message_date.strftime('%d-%m-%y'), mediamodal.resource_file.url)}}
+        {% endif %}
+    {% endfor %}
+
+    <!-- Modal -->
+    {% for bookmodal in book_page_obj if book_page_obj %}
+        {{bookmodalmacro(bookmodal.id, bookmodal.file_title, bookmodal.author, bookmodal.gnere, bookmodal.publisher, bookmodal.publish_year, bookmodal.isbn, bookmodal.foreward, bookmodal.featured_image.url, bookmodal.image_1.url, bookmodal.image_2.url, unpaginated_books)}}
+    {% endfor %}
+    
+{% endblock pageContent %}
+
+
+
+{# pageScriptVendors block override #}
+{% block pageScriptVendors %}
+    {{super()}}
+    <script src="{{ static('assets/vendor/video.js-7.21.1/video.min.js') }}"></script>
+{% endblock pageScriptVendors %}
+
+{# pageScripts block override #}
+{% block pageScripts %}
+    {{super()}}
+    <script src="{{ static('assets/js/players.js') }}"></script>
+{% endblock pageScripts %}
+
+
+
