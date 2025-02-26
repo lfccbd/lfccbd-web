@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+
+{# import testimony macro #}
+{% from 'macros/__testimonies.html' import testimonymodel as testimonymodelmacro %}
+
+{# override meta block #}
+{% block pageMeta %}
+    <title>Testimonies - Winners Chapel CBD</title>
+    <meta name="description"
+        content="For contact inquiries, please reach us using the message form on our website. Alternatively, you can email us or call us. Our dedicated team is available to assist you with any questions, concerns, or requests you may have.">
+    <meta name="keywords"
+        content="testimonies, liviing faith church, winners chapel, winners chapel cbd, winners chapel cbd jhb, bishop david oyedepo, conatct us, contact the ark, faith tarbanacle">
+{% endblock pageMeta %}
+
+<!-- Fonts -->
+{% block fonts %}
+  {{super()}}
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+{% endblock fonts %}
+
+
+
+{% block pageContent %}
+    <!-- Testimonies Section -->
+    <section id="testimonies" class="testimonies section">
+        <div class="container">
+
+            <div class="row">
+                <div class="col text-center px-lg-5">
+                    <h1>TESTIMONIES</h1>
+                    <p class="px-lg-5">
+                        Sharing testimonies is a vital part of our Faith. It allows members to publicly 
+                        acknowledge God's intervention in their lives, inspiring Faith and Hope in others. 
+                        Testimonies help build a collective sense of victory and empowerment. 
+                        They also serve as powerful reminders of God's faithfulness and 
+                        His continued work in the lives of believers.
+                    </p>
+                    <button type="button" class="btn-share-testimony mt-5" data-bs-toggle="modal"
+                        data-bs-target="#testimonyForm">Share Your Testimony</button>        
+                </div>
+                    
+                {% for msg in messages if messages %} 
+                    {% if msg.level_tag == 'success' %} 
+                        <span id="msg-sucess" style="color: seagreen; font-weight:bold; text-align:center; margin-top: 50px;">{{msg.message}} </span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- Testimony Cards -->
+            {% if testimonies %}
+                <div class="row g-4 mt-5">
+                    <h1 class="testimony-box-title mt-5">TESTIMONY <span class="text-red">BOX</span></h1>
+
+                    {% for testimony in testimonies if testimonies %}
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="testimony-card">
+                                <h3><img src="{{ static('assets/img/logo-red-small.png') }}" class="me-3" alt="">{{testimony.title}}</h3>
+                                <p class="mt-4">
+                                    {{testimony.testimony|truncate(239, true)}}
+                                </p>
+                                <a href="#" class="d-flex align-items-center link-learn-more" data-bs-toggle="modal"
+                                    data-bs-target="#{{testimony.id}}">Learn More
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M9.31 6.71a.996.996 0 0 0 0 1.41L13.19 12l-3.88 3.88a.996.996 0 1 0 1.41 1.41l4.59-4.59a.996.996 0 0 0 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01" />
+                                    </svg>
+                                </a>
+
+                                <div class="testimony-card-footer mt-3 d-flex align-items-end justify-content-between">
+                                    <div class="d-flex">
+                                        <img src="{{ static('assets/img/testimony-logo.png') }}" class="img-fluid me-3" alt="">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h4>{{testimony.designation}} {{testimony.last_name}} {{testimony.first_name}}</h4>
+                                            <small>{{testimony.location|truncate(27, true)}}</small>
+                                        </div>
+                                    </div>
+                                    <small>{{testimony.date_received|date_format}}</small>
+                                </div>
+                            </div>
+                        </div>
+                        {{ testimonymodelmacro(testimony.id, testimony.testimony, testimony.designation, testimony.last_name, testimony.first_name, testimony.location, testimony.date_received|date_format) }}
+
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+            {# pagination using only jinja, no js #}
+            {% if is_paginated %}
+                <nav aria-label="..." class="mt-5">
+                    <ul class="pagination justify-content-center justify-content-lg-start">
+                        {# init total pages #}
+                        {% set pagesNum = paginator.page_range|count + 1 %}
+                        {# init total items in the pagination #}
+                        {% set totalItems = paginator.count %}
+                        {# init start number for the pagination range #}
+                        {% set starterCount = 1 %}
+                        {# init current page in the pagination #}
+                        {% set currentPage = page_obj.number  %}
+                        {# number of items to show in page per time #}
+                        {% set controller = 4 %}
+                        {# set the range of the pagination per time#}
+                        {% set numberRange = totalItems %}
+
+                        {# set left navigation link #}
+                        {% set previous_pagination_link = "" %}
+                        {% if page_obj.number - 1  >  0 %}
+                            {% set previous_pagination_link = previous_pagination_link + "?page=" + (currentPage - 1)|string %}
+                        {% else %}
+                            {% set previous_pagination_link = previous_pagination_link + "#" %}
+                        {% endif %}
+
+                        {# check if the current page is greater than the controller, if true,
+                            increase the number range by the total item plus 1 since a range 
+                            will stop at one shy in a loop and then set starter count to the
+                            current page minus 2 so that next page will start at 2 for instance
+                        #}
+
+                        {% if currentPage > controller  %}
+                            {% set numberRange = totalItems + 1 %}
+                            {% set starterCount = currentPage - 4 %}
+                        {% else %}
+                            {% set numberRange = 6 %}
+                        {% endif %}
+
+                        {# page numbers to show #}
+                        {% if (pagesNum - numberRange - 1)  > 0 %}
+                            {% set numberRange = numberRange + (pagesNum - numberRange - 1) %}
+                        {% endif  %}
+                        {% if currentPage < pagesNum-1 and currentPage > 4 %}
+                            {% if (pagesNum - currentPage) >= 1 %}
+                                {% set starterCount = currentPage - 2 %}                                                  
+                            {% endif  %}
+                        {% elif currentPage+2 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 2 > 0 %}
+                            {% set starterCount = currentPage - 2 %}
+                        {% elif currentPage+1 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 1 > 0 %}
+                            {% set starterCount = currentPage - 1 %}
+                        {% endif %}
+
+                        <li class="page-item d-none"><a href="{{previous_pagination_link}}" class="page-link">Previous</a></li>
+                        
+                        {# loop and set the numbering #}
+                        {% for k in range(starterCount, numberRange) %}
+                            {% if k <= pagesNum  %}
+                                {# add the activate style for current page #}
+                                {% if currentPage==k %} 
+                                    <li class="page-item active"><a class="page-link" href="?page={{k}}">{{k}}</a></li>
+                                    {% if not loop.first %}
+                                        {% set starterCount = starterCount + 1 %}
+                                        {% set numberRange = numberRange + 1 %}
+                                    {% endif %}
+                                {% elif loop.index <  pagesNum and k - 4 < starterCount %}
+                                    <li class="page-item"><a class="page-link" href="?page={{k}}">{{k}}</a></li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {# check if there is still more pages to show #}
+                        {% set pageLeft = (pagesNum - 1) - currentPage %}
+                        {% if  pageLeft > 1 and pagesNum-1 > 4 %}
+                            <li class="page-item"><a class="page-link" href="#" style="display: inline-block;">...</a></li>
+                        {% endif %} 
+                        
+                        {# set right navigation button #}
+                        {% set next_pagination_link = "" %}
+                        {% if currentPage + 1  <  pagesNum %}
+                            {% set next_pagination_link = next_pagination_link + "?page=" + (currentPage + 1)|string %}
+                        {% else %}
+                            {% set next_pagination_link = next_pagination_link + "#" %}
+                        {% endif %}
+
+                        <li class="page-item"><a class="page-link" href="{{next_pagination_link}}">Next</a></li>
+                    </ul>
+                </nav>
+            {% endif %}
+            
+        </div>
+    </section><!-- /Testimonies Section -->
+
+
+    <!-- Modal -->
+    <div class="modal fade testimony" id="testimonyForm" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body py-4 px-4">
+                    <h2 class="d-flex align-items-center">
+                        <img src="{{ static('assets/img/logo-red-small.png') }}" class="img-fluid me-2" alt="">
+                        Testimony Form
+                    </h2>
+                    
+                    <form class="row gx-3 gy-4 mt-3" method="post">
+                        {{csrf_input}}
+
+                        {% if form.errors %}
+                            <span class="text-red" style="font-weight: bold; text-align:center;">Error in Form Fields. All Fields Are Required.</span>
+                        {% endif %}
+
+                        <div class="col-md-12">
+                            <label for="id_firstName" class="form-label">First Name</label>
+                            {{form.first_name}}
+                            <span class="text-red">{{form.first_name.errors|striptags}}</span>
+                        </div>
+                        <div class="col-12">
+                            <label for="id_lastName" class="form-label">Last Name</label>
+                            {{form.last_name}}
+                            <span class="text-red">{{form.last_name.errors|striptags}}</span>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="id_designation" class="form-label">Designation</label>
+                            {{form.designation}}
+                            <span class="text-red">{{form.designation.errors|striptags}}</span>
+                        </div>
+                        <div class="col-12">
+                            <label for="id_title" class="form-label">Title</label>
+                            {{form.title}}
+                            <span class="text-red">{{form.title.errors|striptags}}</span>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-between">
+                                <label for="testimony" class="form-label">Testimony</label>
+                                <span class="text-muted">Max Char. 1000</span>
+                            </div>
+                            {{form.testimony}}
+                            <span class="text-red">{{form.testimony.errors|striptags}}</span>
+                        </div>
+                        <div class="col-12">
+                            <label for="id_location" class="form-label">Church Branch</label>
+                            {{form.location}}
+                            <span class="text-red">{{form.location.errors|striptags}}</span>
+                        </div>
+                        {{ form.captcha }}
+                        <div class="col-12 d-grid">
+                            <button type="submit" class="btn btn-primary">Save and Continue</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock pageContent %}
+
+{% block pageScripts %}
+    {{super()}}
+    <script>
+        setTimeout(() => {
+            document.getElementById('msg-sucess').style.display= 'none';
+        }, 5000);
+    </script>
+    {% if form.errors %}
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                var myModal = new bootstrap.Modal(document.getElementById('testimonyForm')); 
+                myModal.show();  // ✅ Show the modal
+            });          
+            
+        </script>
+    {% endif %}
+{% endblock pageScripts %}
