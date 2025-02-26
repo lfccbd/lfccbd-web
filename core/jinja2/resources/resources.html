@@ -68,8 +68,8 @@
                                 <div class="col-md-8 offset-md-2">
                                     <form action="#" method="get">
                                         <div class="search-form">
-                                            <input type="text" name="search" placeholder="Search">
-                                            <input type="text" name="section" placeholder="Search" value="sermons" disabled style="display: none;">
+                                            <input type="text" name="search" placeholder="{% if request.GET.get('search') and request.GET.get('section') == 'sermons' %}{{request.GET.get('search')}} {% else %} Search{% endif %}">
+                                            <input type="hidden" name="section" value="sermons">
                                             <button type="submit" class="btn"><img src="{{ static('assets/img/icon-search.png') }}"></button>
                                         </div>
                                        
@@ -279,8 +279,8 @@
                                 <div class="col-md-8 offset-md-2">
                                     <form action="#" method="get">
                                         <div class="search-form">
-                                            <input type="text" name="search" placeholder="Search">
-                                            <input type="text" name="section" placeholder="Search" value="books" disabled style="display: none;">
+                                            <input type="text" name="search" placeholder="{% if request.GET.get('search') and request.GET.get('section') == 'books' %}{{request.GET.get('search')}} {% else %} Search{% endif %}">
+                                            <input type="hidden" name="section" placeholder="Search" value="books">
                                             <button type="submit" class="btn"><img src="{{ static('assets/img/icon-search.png') }}"></button>
                                         </div>
                                     </form>
