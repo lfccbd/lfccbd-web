@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Books, ImageSliders, Media
+from .models import Book, ImageSlider, Media
 
 
 class ImageSliderAdmin(admin.ModelAdmin):
@@ -55,8 +55,15 @@ class ImageSliderAdmin(admin.ModelAdmin):
 
 
 class MediaMessageAdmin(admin.ModelAdmin):
-	list_display = ['file_title', 'service', 'file_title', 'sermon_type', 'view_count', 'message_date']
-	list_display_links = ['file_title', 'service', 'file_title', 'view_count']
+	list_display = [
+		'file_title',
+		'service',
+		'file_title',
+		'sermon_type',
+		'media_format',
+		'message_date',
+	]
+	list_display_links = ['file_title', 'service', 'file_title']
 	list_filter = ['publish']
 	date_hierarchy = 'last_updated'
 	list_per_page = 50
@@ -66,13 +73,13 @@ class MediaMessageAdmin(admin.ModelAdmin):
 	save_as = True
 	save_as_continue = True
 	save_on_top = True
-	search_fields = ['file_title', 'service', 'view_count', 'message_date']
+	search_fields = ['file_title', 'service', 'message_date']
 	fields = [
 		'file_title',
 		'service',
-		'reource_file',
+		'resource_file',
 		'sermon_type',
-		'view_count',
+		'media_format',
 		'message_date',
 		'publish',
 		'last_updated',
@@ -80,8 +87,8 @@ class MediaMessageAdmin(admin.ModelAdmin):
 
 
 class BooksAdmin(admin.ModelAdmin):
-	list_display = ['file_title', 'author', 'publish_year', 'publisher', 'isbn', 'view_count', 'publish']
-	list_display_links = ['file_title', 'author', 'publish_year', 'publisher', 'isbn', 'view_count']
+	list_display = ['file_title', 'author', 'publish_year', 'publisher', 'isbn', 'publish']
+	list_display_links = ['file_title', 'author', 'publish_year', 'publisher', 'isbn']
 	list_filter = ['publish']
 	date_hierarchy = 'last_updated'
 	list_per_page = 50
@@ -91,14 +98,14 @@ class BooksAdmin(admin.ModelAdmin):
 	save_as = True
 	save_as_continue = True
 	save_on_top = True
-	search_fields = ['file_title', 'author', 'publish_year', 'publisher', 'isbn']
+	search_fields = ['file_title', 'author', 'gnere', 'publish_year', 'publisher', 'isbn']
 
 	fieldsets = [
 		[
 			'General Information',
 			{
 				'classes': ['wide', 'extrapretty'],
-				'fields': ['file_title', 'author', 'view_count', 'foreward'],
+				'fields': ['file_title', 'author', 'foreward'],
 			},
 		],
 		[
@@ -125,6 +132,6 @@ class BooksAdmin(admin.ModelAdmin):
 	]
 
 
-admin.site.register(ImageSliders, ImageSliderAdmin)
+admin.site.register(ImageSlider, ImageSliderAdmin)
 admin.site.register(Media, MediaMessageAdmin)
-admin.site.register(Books, BooksAdmin)
+admin.site.register(Book, BooksAdmin)
