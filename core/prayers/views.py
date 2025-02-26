@@ -3,9 +3,8 @@ from django.http import HttpResponsePermanentRedirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 
-from .models import PrayerRequest  # type: ignore
-
 from .forms import PrayerRequestForm
+from .models import PrayerRequest  # type: ignore
 
 
 class PrayerRequestPage(CreateView):

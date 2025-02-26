@@ -65,10 +65,10 @@ class ResourcesListView(View):
 					(Q(file_title__icontains=search_query) | Q(gnere__icontains=search_query))
 					& Q(category__icontains=search_section)
 				)
-    
+
 				# remain unchanged
 				media = media_publish
-    
+
 			elif search_query != '' and search_section == '':
 				media = media_publish.filter(
 					Q(file_title__icontains=search_query) | Q(service__icontains=search_query)

@@ -6,7 +6,6 @@ from core.contacts.forms import Nh3CleanCharField
 
 from .models import Testimony  # type: ignore
 
-
 options = (
 	('Mr / Mrs / Deacon / Deaconess', 'Mr / Mrs / Deacon / Deaconess'),
 	('Mr', 'Mr'),

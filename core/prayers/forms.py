@@ -29,7 +29,8 @@ class PrayerRequestForm(forms.ModelForm):
 	first_name = Nh3CleanCharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
 	last_name = Nh3CleanCharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
 	prayer = Nh3CleanCharField(
-		required=True, widget=forms.Textarea(attrs={'placeholder': 'Your Prayer Request', 'class': 'form-control', 'row': 12})
+		required=True,
+		widget=forms.Textarea(attrs={'placeholder': 'Your Prayer Request', 'class': 'form-control', 'row': 12}),
 	)
 	captcha = ReCaptchaField(widget=ReCaptchaV3())
 
