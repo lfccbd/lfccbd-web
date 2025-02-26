@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+
+{# override meta block #}
+{% block pageMeta %}
+    <title>Ministries - Winners Chapel JHB CBD</title>
+    <meta name="description"
+        content="Ministries play a crucial role in the life of Our Church. They exist to reach people in diverse ways, ensuring that the Church's mission and vision are lived out in practical, impactful ways in the lives of all Worshipers.">
+    <meta name="keywords"
+        content="liviing faith church, liviing faith church cbd, liviing faith church johannesburg, liviing faith church south africa, lfc johannesburg, lfc cbd, winners chapel, winners chapel cbd, winners chapel cbd jhb, bishop david oyedepo, conatct us, contact the ark, faith tarbanacle">
+{% endblock pageMeta %}
+
+
+{# fonts block override #}
+<!-- Fonts -->
+{% block fonts %}
+  {{super()}}
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+{% endblock fonts %}
+
+
+{# pageContent block override #}
+{% block pageContent %}
+
+    <section id="ministries" class="ministries section">
+        <div class="container">
+
+            <div class="row">
+                <div class="col text-center px-lg-5">
+                    <img src="{{ static('assets/img/logo-red.png') }}" class="img-fluid mb-3" alt="">
+                    <h1>OUR MINISTRIES</h1>
+                    <p class="px-lg-5 mx-lg-5 mt-3">
+                        Ministries play a crucial role in the life of Our Church. 
+                        They exist to reach people in diverse ways, ensuring that the Church's mission and vision 
+                        are lived out in practical, impactful ways in the lives of all Worshipers.
+                    </p>
+                </div>
+            </div>
+
+            <div id="ministries-carousel" class="carousel slide carousel-fade mb-5" data-bs-ride="carousel"
+                data-bs-interval="5000">
+
+                <div class="carousel-item active">
+                    <div class="carousel-container">
+                        <div class="row g-4">
+
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="ministry-link">
+                                    <a href="{{ url('sunday_ministry') }}">
+                                        <img src="{{ static('assets/img/speaker.png') }}" class="img-fluid" alt="">
+                                        <div class="d-flex align-items-end">
+                                        </div>
+                                        <h5>Sunday Services</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="ministry-link">
+                                    <a href="{{ url('wenesday_ministry') }}">
+                                        <img src="{{ static('assets/img/hero-carousel/hero-carousel-6.jpg') }}" class="img-fluid" alt="">
+                                        <div class="d-flex align-items-end">
+                                        </div>
+                                        <h5>Wenesday Service</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="ministry-link">
+                                    <a href="{{ url('wose_ministry') }}">
+                                        <img src="{{ static('assets/img/quick-links/5.jpg') }}" class="img-fluid" alt="">
+                                        <div class="d-flex align-items-end">
+                                        </div>
+                                        <h5>Week Of Spiritual Emphasis</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="ministry-link">
+                                    <a href="{{ url('chop_ministry') }}">
+                                        <img src="{{ static('assets/img/search-3.png') }}" class="img-fluid" alt="">
+                                        <div class="d-flex align-items-end">
+                                        </div>
+                                        <h5>Convent Hour Of Prayer</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="ministry-link">
+                                    <a href="{{ url('wsf_ministry') }}">
+                                        <img src="{{ static('assets/img/ministry.png') }}" class="img-fluid" alt="">
+                                        <div class="d-flex align-items-end">
+                                        </div>
+                                        <h5>Winners Satellite Fellowship (WSF)</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="ministry-link">
+                                    <a href="{{ url('wofbi_ministry') }}">
+                                        <img src="{{ static('assets/img/m6.png') }}" class="img-fluid" alt="">
+                                        <div class="d-flex align-items-end">
+                                        </div>
+                                        <h5>Word of Faith Bible Institute (WOFBI)</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!-- End Carousel Item -->
+
+                <div class="carousel-item">
+                    <div class="carousel-container">
+                        <div class="row g-4">
+
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="ministry-link">
+                                    <a href="{{ url('yaf_ministry') }}">
+                                        <img src="{{ static('assets/img/m1.png') }}" class="img-fluid" alt="">
+                                        <div class="d-flex align-items-end">
+                                        </div>
+                                        <h5>Youth Alive Fellowship (YAF)</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="ministry-link">
+                                    <a href="{{ url('children_ministry') }}">
+                                        <img src="{{ static('assets/img/m2.png') }}" class="img-fluid" alt="">
+                                        <div class="d-flex align-items-end">
+                                        </div>
+                                        <h5>Children Department</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="ministry-link">
+                                    <a href="{{ url('evangelism_ministry') }}">
+                                        <img src="{{ static('assets/img/m3.png') }}" class="img-fluid" alt="">
+                                        <div class="d-flex align-items-end">
+                                        </div>
+                                        <h5>Evangelism Department</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="ministry-link">
+                                    <a href="{{ url('sanctuary_ministry') }}">
+                                        <img src="{{ static('assets/img/search-2.png') }}" class="img-fluid" alt="">
+                                        <div class="d-flex align-items-end">
+                                        </div>
+                                        <h5>Sanctuary Department</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="ministry-link">
+                                    <a href="{{ url('followup_ministry') }}">
+                                        <img src="{{ static('assets/img/m4.png') }}" class="img-fluid" alt="">
+                                        <div class="d-flex align-items-end">
+                                        </div>
+                                        <h5>Followup Department</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="ministry-link">
+                                    <a href="{{ url('hospitality_ministry') }}">
+                                        <img src="{{ static('assets/img/m6.png') }}" class="img-fluid" alt="">
+                                        <div class="d-flex align-items-end">
+                                        </div>
+                                        <h5>Hospitality Department</h5>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!-- End Carousel Item -->
+                <ol class="carousel-indicators"></ol>
+            </div>
+        </div>
+    </section>
+{% endblock pageContent %}

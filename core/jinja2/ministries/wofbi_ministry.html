@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{# override meta block #}
+{% block pageMeta %}
+    <title>WOFBI - Winners Chapel JHB CBD</title>
+    <meta name="description"
+        content="The Word of Faith Bible Institute (WOFBI) is an essential training ground for believers who desire to deepen their understanding of the Bible and grow in their Christian faith.">
+    <meta name="keywords"
+        content="wofbi, word of faith bible institute, liviing faith church, liviing faith church cbd, liviing faith church johannesburg, liviing faith church south africa, lfc johannesburg, lfc cbd, winners chapel, winners chapel cbd, winners chapel cbd jhb, bishop david oyedepo, conatct us, contact the ark, faith tarbanacle">
+{% endblock pageMeta %}
+
+
+<!-- Fonts -->
+{% block fonts %}
+  {{super()}}
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+{% endblock fonts %}
+
+
+{# pageContent block override #}
+{% block pageContent %}
+
+    <!-- About Section -->
+    <section id="about-winners" class="about-winners ministries section">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col text-center px-lg-5">
+                    <img src="{{ static('assets/img/logo-red.png') }}" class="img-fluid mb-3" alt="">
+                    <h1>WORD OF <span class="text-red"> FAITH BIBLE INSTITUTE</span> (WOFBI)</h1>
+                    <p class="mx-lg-5 px-lg-5 mt-3">
+                        The Word of Faith Bible Institute (WOFBI) is an essential training ground for 
+                        believers who desire to deepen their understanding of the Bible and grow in their 
+                        Christian faith. WOFBI offers structured courses that equip participants with 
+                        solid biblical knowledge, practical ministry skills, and the tools necessary 
+                        to live out their faith effectively.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-7 pe-lg-4 d-flex flex-column justify-content-center order-last order-lg-first">
+                    <h2>
+                        “... a workman that needeth not to be ashamed,
+                        <span class="text-red">rightly dividing the word of truth</span>.”
+                    </h2>
+                    <p>
+                        Graduates of WOFBI are better equipped to take on leadership roles, evangelize, 
+                        and live out the gospel in every area of their lives. The institute serves as 
+                        a launching pad for believers to grow in their spiritual walk, fulfill their 
+                        God-given purpose, and impact the world for Christ.
+                    </p>
+                    <br><br>
+                    <div class="text-center text-lg-start">
+                        <a href="{{ url('contact') }}" class="btn-join-us mt-4">Join Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-first order-lg-last d-flex justify-content-center mb-4 mb-lg-0">
+                    <img src="{{ static('assets/img/quick-links/2.jpg') }}" class="img-fluid" alt="">
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+{% endblock pageContent %}

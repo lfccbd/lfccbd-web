@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{# override meta block #}
+{% block pageMeta %}
+    <title>Evangelism Department - Winners Chapel JHB CBD</title>
+    <meta name="description"
+        content="The Evangelism Department is a crucial ministry within the church, dedicated to spreading the gospel and reaching out to those who have not yet heard the message of Jesus Christ. ">
+    <meta name="keywords"
+        content="evangelism department, evangelism, liviing faith church, liviing faith church cbd, liviing faith church johannesburg, liviing faith church south africa, lfc johannesburg, lfc cbd, winners chapel, winners chapel cbd, winners chapel cbd jhb, bishop david oyedepo, conatct us, contact the ark, faith tarbanacle">
+{% endblock pageMeta %}
+
+
+<!-- Fonts -->
+{% block fonts %}
+  {{super()}}
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+{% endblock fonts %}
+
+
+{# pageContent block override #}
+{% block pageContent %}
+
+    <!-- About Section -->
+    <section id="about-winners" class="about-winners ministries section">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col text-center px-lg-5">
+                    <img src="{{ static('assets/img/logo-red.png') }}" class="img-fluid mb-3" alt="">
+                    <h1>WINNERS <span class="text-red"> EVANGELISM </span> DEPARTMENT</h1>
+                    <p class="mx-lg-5 px-lg-5 mt-3">
+                        The Evangelism Department is a crucial ministry within the church, dedicated to spreading 
+                        the gospel and reaching out to those who have not yet heard the message of Jesus Christ. 
+                        Its primary goal is to equip believers with the tools, knowledge, and passion to share 
+                        their faith and bring others into the kingdom of God.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-7 pe-lg-4 d-flex flex-column justify-content-center order-last order-lg-first">
+                    <h2>
+                        “... <span class="text-red">Go ye into all the world</span>, 
+                        and preach the gospel to every creature.”
+                    </h2>
+                    <p>
+                        The Evangelism Department also emphasizes the importance of prayer and support for 
+                        those who are being reached, fostering a spirit of compassion and dedication in 
+                        all evangelistic efforts. 
+                    </p>
+                    <br><br>
+                    <div class="text-center text-lg-start">
+                        <a href="{{ url('contact') }}" class="btn-join-us mt-4">Join Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-first order-lg-last d-flex justify-content-center mb-4 mb-lg-0">
+                    <img src="{{ static('assets/img/m3.png') }}" class="img-fluid" alt="">
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+{% endblock pageContent %}

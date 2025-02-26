@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{# override meta block #}
+{% block pageMeta %}
+    <title>CHOP - Winners Chapel JHB CBD</title>
+    <meta name="description"
+        content="The Covenant Hour of Prayer is a powerful and transformative time set aside for believers to come together in prayer, interceding for personal needs, the church, and the world.">
+    <meta name="keywords"
+        content="liviing faith church, liviing faith church cbd, liviing faith church johannesburg, liviing faith church south africa, lfc johannesburg, lfc cbd, winners chapel, winners chapel cbd, winners chapel cbd jhb, bishop david oyedepo, conatct us, contact the ark, faith tarbanacle">
+{% endblock pageMeta %}
+
+
+<!-- Fonts -->
+{% block fonts %}
+  {{super()}}
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+{% endblock fonts %}
+
+
+{# pageContent block override #}
+{% block pageContent %}
+
+    <!-- About Section -->
+    <section id="about-winners" class="about-winners ministries section">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col text-center px-lg-5">
+                    <img src="{{ static('assets/img/logo-red.png') }}" class="img-fluid mb-3" alt="">
+                    <h1>WINNERS <span class="text-red">CONVENANT HOUR</span> OF PRAYER</h1>
+                    <p class="mx-lg-5 px-lg-5 mt-3">
+                        The Covenant Hour of Prayer is a powerful and transformative time set 
+                        aside for believers to come together in prayer, interceding for personal 
+                        needs, the church, and the world. It serves as a dedicated space to seek 
+                        God's guidance, experience His presence, and activate His promises 
+                        through fervent prayer.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-7 pe-lg-4 d-flex flex-column justify-content-center order-last order-lg-first">
+                    <h2>
+                        “Call unto me, and <span class="text-red">I will answer thee</span>, and shew 
+                        thee <span class="text-red">great and mighty things</span>, ...”
+                    </h2>
+                    <p>
+                        At Winners Chapel CBD Johannesburg, we hold Convenant Hour Of Prayer every day, 
+                        <span class="text-red">Monday to Saturday by 6 AM</span>.
+                        <span class="text-red" style="font-weight: bold;">
+                            Venue: 134 Marshall Street, Johannesburg, South Africa.</span>
+                    </p>
+                    <br><br>
+                    <div class="text-center text-lg-start">
+                        <a href="{{ url('contact') }}" class="btn-join-us mt-4">Join Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-first order-lg-last d-flex justify-content-center mb-4 mb-lg-0">
+                    <img src="{{ static('assets/img/quick-links/5.jpg') }}" class="img-fluid" alt="">
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+{% endblock pageContent %}

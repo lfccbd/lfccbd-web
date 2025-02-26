@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{# override meta block #}
+{% block pageMeta %}
+    <title>Sanctuary Department - Winners Chapel JHB CBD</title>
+    <meta name="description"
+        content="The Sanctuary Department is a vital ministry within the church, responsible for maintaining the sanctity, beauty, and orderliness of the church’s worship spaces.">
+    <meta name="keywords"
+        content="sanctuary department, sanctuary, liviing faith church, liviing faith church cbd, liviing faith church johannesburg, liviing faith church south africa, lfc johannesburg, lfc cbd, winners chapel, winners chapel cbd, winners chapel cbd jhb, bishop david oyedepo, conatct us, contact the ark, faith tarbanacle">
+{% endblock pageMeta %}
+
+
+<!-- Fonts -->
+{% block fonts %}
+  {{super()}}
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+{% endblock fonts %}
+
+
+{# pageContent block override #}
+{% block pageContent %}
+
+    <!-- About Section -->
+    <section id="about-winners" class="about-winners ministries section">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col text-center px-lg-5">
+                    <img src="{{ static('assets/img/logo-red.png') }}" class="img-fluid mb-3" alt="">
+                    <h1>WINNERS <span class="text-red"> SANCTUARY </span> DEPARTMENT</h1>
+                    <p class="mx-lg-5 px-lg-5 mt-3">
+                        The Sanctuary Department is a vital ministry within the church, 
+                        responsible for maintaining the sanctity, beauty, a
+                        nd orderliness of the church’s worship spaces. This department 
+                        plays a key role in creating an environment conducive to worship,
+                         prayer, and reflection, ensuring that the sanctuary remains a place 
+                         where believers can encounter God's presence in reverence.
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-7 pe-lg-4 d-flex flex-column justify-content-center order-last order-lg-first">
+                    <h2>
+                        “... <span class="text-red">he shall bless thy bread, and thy water</span>; 
+                        and I will take sickness away ...
+                    </h2>
+                    <p>
+                        Sanctuary Department serves a spiritual role by fostering an atmosphere of reverence and respect 
+                        within the church. This may involve guiding attendees on proper conduct in the sanctuary, 
+                        ensuring that the space remains quiet and focused for prayer and worship.
+                    </p>
+                    <br><br>
+                    <div class="text-center text-lg-start">
+                        <a href="{{ url('contact') }}" class="btn-join-us mt-4">Join Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-first order-lg-last d-flex justify-content-center mb-4 mb-lg-0">
+                    <img src="{{ static('assets/img/giving.png') }}" class="img-fluid" alt="">
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+{% endblock pageContent %}

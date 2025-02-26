@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{# override meta block #}
+{% block pageMeta %}
+    <title>Hospitality Department - Winners Chapel JHB CBD</title>
+    <meta name="description"
+        content="The Hospitality Department is an important ministry within the church, dedicated to creating a warm, welcoming, and comfortable environment for all attendees.">
+    <meta name="keywords"
+        content="hospitality department, hospitality, liviing faith church, liviing faith church cbd, liviing faith church johannesburg, liviing faith church south africa, lfc johannesburg, lfc cbd, winners chapel, winners chapel cbd, winners chapel cbd jhb, bishop david oyedepo, conatct us, contact the ark, faith tarbanacle">
+{% endblock pageMeta %}
+
+
+<!-- Fonts -->
+{% block fonts %}
+  {{super()}}
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+{% endblock fonts %}
+
+
+{# pageContent block override #}
+{% block pageContent %}
+
+    <!-- About Section -->
+    <section id="about-winners" class="about-winners ministries section">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col text-center px-lg-5">
+                    <img src="{{ static('assets/img/logo-red.png') }}" class="img-fluid mb-3" alt="">
+                    <h1>WINNERS <span class="text-red"> HOSPITALITY </span> DEPARTMENT</h1>
+                    <p class="mx-lg-5 px-lg-5 mt-3">
+                        The Hospitality Department is an important ministry within the 
+                        church, dedicated to creating a warm, welcoming, and comfortable environment 
+                        for all attendees. This department plays a significant role in ensuring that 
+                        everyone—whether new visitors, regular members, or guests—feels valued and 
+                        cared for from the moment they enter the church.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-7 pe-lg-4 d-flex flex-column justify-content-center order-last order-lg-first">
+                    <h2>
+                        “ Distributing to the necessity of saints; 
+                        <span class="text-red">given to hospitality</span>.”
+                    </h2>
+                    <p>
+                        The Hospitality Department serves as a reflection of God’s 
+                        love and care, making people feel welcome, accepted, and supported. 
+                        It creates a space where everyone can experience the warmth of Christian 
+                        fellowship and the love of Christ, helping to cultivate a community that 
+                        is united, loving, and inclusive.
+                    </p>
+                    <br><br>
+                    <div class="text-center text-lg-start">
+                        <a href="{{ url('contact') }}" class="btn-join-us mt-4">Join Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-first order-lg-last d-flex justify-content-center mb-4 mb-lg-0">
+                    <img src="{{ static('assets/img/ministry.png') }}" class="img-fluid" alt="">
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+{% endblock pageContent %}
