@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {# consant block t#}
+    {% block pageMetaMain %}
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    {% endblock pageMetaMain %}
+
+    {# tags per page#}
+    {% block pageMeta %}
+        <title>Home - LIVING FAITH CHURCH JHB CBD</title>
+        <meta name="description" content="Winners Chapel CBD is a welcoming church that strives to bring people into a deeper relationship with God. As part of the Living Faith Church Family, it is dedicated to preaching the Gospel, teaching the Word, and empowering believers to live a Faith Filled Life with purpose.">
+        <meta name="keywords" content="liviing faith church, liviing faith church cbd, liviing faith church johannesburg, liviing faith church south africa, lfc johannesburg, lfc cbd, winners chapel, winners chapel cbd, winners chapel cbd jhb, bishop david oyedepo, the ark, faith tarbanacle">
+    {% endblock pageMeta %}
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="{{ static('assets/favicons/favicon-96x96.png') }}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{{ static('assets/favicons/favicon.svg') }}" />
+    <link rel="shortcut icon" href="{{ static('assets/favicons/favicon.ico') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ static('assets/favicons/apple-touch-icon.png') }}" />
+    <meta name="apple-mobile-web-app-title" content="LFC CBD" />
+    <link rel="manifest" href="{{ static('assets/favicons/site.webmanifest') }}" />
+
+    <!-- Fonts -->
+    {% block fonts %}
+        <link href="https://fonts.googleapis.com" rel="preconnect">
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&display=swap" rel="stylesheet">
+    {% endblock fonts %}
+
+    <!-- Vendor CSS Files -->
+    {% block vendorStyle %}
+        <link href="{{ static('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ static('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+        <link href="{{ static('assets/vendor/aos/aos.css') }}" rel="stylesheet">
+        <link href="{{ static('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    {% endblock vendorStyle %}
+
+    <!-- Main CSS File -->
+    {% block pageStyle %}
+        <link href="{{ static('assets/css/main.css') }}" rel="stylesheet">
+    {% endblock pageStyle %}
+
+    <!-- =======================================================
+  * Template Name: LIVING FAITH CHURCH
+  ======================================================== -->
+</head>
+
+<body {% block bodyClass %}class="index-page"{% endblock bodyClass %}>
+    {# menu header #}
+    {% include 'partials/__header.html' %}
+
+    <main {% block mainBodyClass %}class="main"{% endblock mainBodyClass %}>
+        {# page content #}
+        {% block pageContent %}{% endblock pageContent %}
+    </main>
+
+    {# footer section #}
+    {% include 'partials/__footer.html' %}
+
+    {# scroller #}
+    {% include 'partials/__scroller.html' %}
+
+    {# preloader #}
+    {% include 'partials/__preloader.html' %}
+
+
+    <!-- Vendor JS Files -->
+    {% block pageScriptVendors %}
+        <script src="{{ static('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ static('assets/vendor/aos/aos.js') }}"></script>
+        <script src="{{ static('assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+        <script src="{{ static('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    {% endblock pageScriptVendors %}
+    
+    <!-- Main JS File -->
+    {% block pageScripts %}
+        <script src="{{ static('assets/js/main.js') }}"></script>
+    {% endblock pageScripts %}
+</body>
+
+</html>
