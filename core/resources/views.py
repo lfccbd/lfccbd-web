@@ -52,16 +52,24 @@ class ResourcesListView(View):
 				)
 		else:
 			if search_section == 'sermons':
+				# filter sermon
 				media = media_publish.filter(
 					(Q(file_title__icontains=search_query) | Q(service__icontains=search_query))
-					& Q(category=search_section)
+					& Q(category__icontains=search_section)
 				)
+				# remain unchanged
+				books = books_publish
 			elif search_section == 'books':
+				# filter books
 				books = books_publish.filter(
 					(Q(file_title__icontains=search_query) | Q(gnere__icontains=search_query))
-					& Q(category=search_section)
+					& Q(category__icontains=search_section)
 				)
-			elif search_query and search_query:
+    
+				# remain unchanged
+				media = media_publish
+    
+			elif search_query != '' and search_section == '':
 				media = media_publish.filter(
 					Q(file_title__icontains=search_query) | Q(service__icontains=search_query)
 				)
