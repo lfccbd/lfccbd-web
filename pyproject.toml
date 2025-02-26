@@ -8,7 +8,7 @@ readme = "README.rst"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-django = "^4.2.18"
+django = "^4.2.19"
 dotmap = "^1.3.30"
 python-decouple = "^3.8"
 django-split-settings = "^1.3.2"
@@ -33,6 +33,12 @@ nh3 = "^0.2.20"
 django-daisy = "^1.0.9"
 pillow = "^11.1.0"
 django-prose-editor = "^0.10.3"
+boto3 = "^1.36.22"
+django-storages = "^1.14.5"
+python-ffmpeg = "^2.0.12"
+argon2-cffi = "^23.1.0"
+django-otp = "^1.5.4"
+qrcode = "^8.0"
 
 
 [tool.poetry.group.dev.dependencies]
