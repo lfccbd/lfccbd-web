@@ -10,7 +10,11 @@ from core.testimonies.models import generate_custom_id
 
 class UpcomingService(models.Model):
 	id = models.CharField(  # noqa: A003
-		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
+		default=generate_custom_id,
+		editable=False,
+		unique=True,
+		max_length=20,
+		primary_key=True,
 	)
 	slug = AutoSlugField(populate_from='service_theme', unique_with=['id'], editable=False)
 	service_theme = models.CharField(max_length=300)
@@ -33,7 +37,11 @@ class UpcomingService(models.Model):
 
 class EpistleOfMonth(models.Model):
 	id = models.CharField(  # noqa: A003
-		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
+		default=generate_custom_id,
+		editable=False,
+		unique=True,
+		max_length=20,
+		primary_key=True,
 	)
 	slug = AutoSlugField(populate_from='epistle_message_theme', unique_with=['id'], editable=False)
 	epistle_message_theme = models.CharField(max_length=300)
@@ -56,7 +64,11 @@ class EpistleOfMonth(models.Model):
 
 class WordOfDay(models.Model):
 	id = models.CharField(  # noqa: A003
-		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
+		default=generate_custom_id,
+		editable=False,
+		unique=True,
+		max_length=20,
+		primary_key=True,
 	)
 	slug = AutoSlugField(populate_from='message_topic', unique_with=['id'], editable=False)
 	message_topic = models.CharField(max_length=300)
@@ -79,7 +91,11 @@ class WordOfDay(models.Model):
 
 class VerseOfDay(models.Model):
 	id = models.CharField(  # noqa: A003
-		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
+		default=generate_custom_id,
+		editable=False,
+		unique=True,
+		max_length=20,
+		primary_key=True,
 	)
 	slug = AutoSlugField(populate_from='verse', unique_with=['id'], editable=False)
 	verse = models.CharField(max_length=300)
@@ -102,7 +118,11 @@ class VerseOfDay(models.Model):
 
 class BookmarkedUpcomingService(models.Model):
 	bookmark_id = models.CharField(  # noqa: A003
-		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
+		default=generate_custom_id,
+		editable=False,
+		unique=True,
+		max_length=20,
+		primary_key=True,
 	)
 	item_bookmarked = models.ForeignKey('UpcomingService', on_delete=models.CASCADE)
 	history = HistoricalRecords()
@@ -121,7 +141,11 @@ class BookmarkedUpcomingService(models.Model):
 
 class BookmarkedEpistleOfMonth(models.Model):
 	bookmark_id = models.CharField(  # noqa: A003
-		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
+		default=generate_custom_id,
+		editable=False,
+		unique=True,
+		max_length=20,
+		primary_key=True,
 	)
 	item_bookmarked = models.ForeignKey('EpistleOfMonth', on_delete=models.CASCADE)
 	history = HistoricalRecords()
@@ -140,7 +164,11 @@ class BookmarkedEpistleOfMonth(models.Model):
 
 class BookmarkedWordOfDay(models.Model):
 	bookmark_id = models.CharField(  # noqa: A003
-		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
+		default=generate_custom_id,
+		editable=False,
+		unique=True,
+		max_length=20,
+		primary_key=True,
 	)
 	item_bookmarked = models.ForeignKey('WordOfDay', on_delete=models.CASCADE)
 	history = HistoricalRecords()
@@ -159,7 +187,11 @@ class BookmarkedWordOfDay(models.Model):
 
 class BookmarkedVerseOfDay(models.Model):
 	bookmark_id = models.CharField(  # noqa: A003
-		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
+		default=generate_custom_id,
+		editable=False,
+		unique=True,
+		max_length=20,
+		primary_key=True,
 	)
 	item_bookmarked = models.ForeignKey('WordOfDay', on_delete=models.CASCADE)
 	history = HistoricalRecords()
@@ -178,7 +210,11 @@ class BookmarkedVerseOfDay(models.Model):
 
 class SaveForLaterMedia(models.Model):
 	id = models.CharField(  # noqa: A003
-		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
+		default=generate_custom_id,
+		editable=False,
+		unique=True,
+		max_length=20,
+		primary_key=True,
 	)
 	media_saveded = models.ForeignKey(Media, on_delete=models.CASCADE)
 	history = HistoricalRecords()
@@ -192,4 +228,27 @@ class SaveForLaterMedia(models.Model):
 	class Meta:
 		verbose_name = 'Saved Media'
 		verbose_name_plural = 'Saved Media'
+		ordering = ['-date_created']
+
+
+class UpcomingEvent(models.Model):
+	id = models.CharField(  # noqa: A003
+		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
+	)
+	slug = AutoSlugField(populate_from='event_theme', unique_with=['id'], editable=False)
+	event_theme = models.CharField(max_length=100)
+	event_date_time = models.DateTimeField()
+	event_description = ProseEditorField(max_length=340)
+	event_link = models.URLField(null=True, blank=True)
+	history = HistoricalRecords()
+	publish = models.BooleanField(default=True, help_text='make visible on site')
+	date_created = models.DateTimeField(auto_now_add=True)
+	last_updated = models.DateTimeField(default=timezone.now)
+
+	def __str__(self):
+		return self.event_theme
+
+	class Meta:
+		verbose_name = 'Upcoming Event'
+		verbose_name_plural = 'Upcoming Event'
 		ordering = ['-date_created']
