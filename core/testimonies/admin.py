@@ -8,16 +8,17 @@ from .models import Testimony
 class TestimonyMessageAdmin(admin.ModelAdmin):
 	list_display = ['first_name', 'last_name', 'designation', 'date_received']
 	list_display_links = ['first_name', 'last_name', 'designation']
+	list_filter = ['publish']
 	date_hierarchy = 'date_received'
 	list_per_page = 50
 	actions_on_top = True
 	actions_on_bottom = True
-	readonly_fields = ['first_name', 'last_name', 'designation', 'tesitmony']
+	readonly_fields = ['first_name', 'last_name', 'designation', 'location', 'testimony']
 	save_as = True
 	save_as_continue = True
 	save_on_top = True
-	search_fields = ['first_name', 'last_name', 'designation', 'tesitmony', 'date_received']
-	fields = ['first_name', 'last_name', 'designation', 'tesitmony', 'date_received']
+	search_fields = ['first_name', 'last_name', 'designation', 'location', 'testimony', 'date_received']
+	fields = ['first_name', 'last_name', 'designation', 'location', 'title', 'testimony', 'publish', 'date_received']
 
 	# override field display
 	def formfield_for_dbfield(self, db_field, **kwargs):
