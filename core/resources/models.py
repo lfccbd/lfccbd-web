@@ -5,13 +5,21 @@ from simple_history.models import HistoricalRecords
 
 from core.testimonies.models import generate_custom_id
 
-sermon_type = [
+media_type = [
 	('Audio', 'Audio'),
 	('Video', 'Video'),
 ]
 
+sermon_type = [
+	('Sunday Services', 'Sunday Services'),
+	('Mid Week Service', 'Mid Week Service'),
+	('Week of Spiritual Emphasis', 'Week of Spiritual Emphasis'),
+	('One Night With The King', 'One Night With The King'),
+	('Youth Alive', 'Youth Alive'),
+]
 
-class ImageSliders(models.Model):
+
+class ImageSlider(models.Model):
 	id = models.CharField(  # noqa: A003
 		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
 	)
@@ -36,14 +44,14 @@ class Media(models.Model):
 	id = models.CharField(  # noqa: A003
 		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
 	)
-	slug = AutoSlugField(populate_from='title', unique_with=['id'], editable=False)
+	slug = AutoSlugField(populate_from='file_title', unique_with=['id'], editable=False)
 	file_title = models.CharField(max_length=200)
 	category = models.CharField(max_length=50, default='sermons', editable=False)
 	sermon_type = models.CharField(max_length=100, choices=sermon_type, default='Audio', help_text='file type')
+	media_format = models.CharField(max_length=100, choices=media_type, default='Audio', help_text='file type')
 	service = models.CharField(max_length=200, help_text='service name in which message was preached')
 	message_date = models.DateTimeField(help_text='date message was preached')
-	reource_file = models.FileField(upload_to='resources/sermons')
-	view_count = models.IntegerField(default=0, help_text='number of times message has been listened to')
+	resource_file = models.FileField(upload_to='resources/sermons')
 	publish = models.BooleanField(default=True, help_text='make visible on site')
 	history = HistoricalRecords()
 	date_created = models.DateTimeField(auto_now_add=True)
@@ -58,14 +66,15 @@ class Media(models.Model):
 		ordering = ['-date_created']
 
 
-class Books(models.Model):
+class Book(models.Model):
 	id = models.CharField(  # noqa: A003
 		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
 	)
-	slug = AutoSlugField(populate_from='title', unique_with=['id'], editable=False)
-	file_title = models.CharField(max_length=200)
+	slug = AutoSlugField(populate_from='file_title', unique_with=['id'], editable=False)
+	file_title = models.CharField(max_length=200, verbose_name='Book Title')
 	category = models.CharField(max_length=50, default='books', editable=False)
-	author = models.CharField(max_length=200, help_text='service name in which message was preached')
+	author = models.CharField(max_length=200, help_text='book author')
+	gnere = models.CharField(max_length=200, null=True, blank=True)
 	publish_year = models.IntegerField()
 	publisher = models.CharField(max_length=200)
 	foreward = models.TextField(max_length=2000)
@@ -73,7 +82,6 @@ class Books(models.Model):
 	featured_image = models.ImageField(upload_to='resources/books/', help_text='main image')
 	image_1 = models.ImageField(upload_to='resources/books/', help_text='gallery image')
 	image_2 = models.ImageField(upload_to='resources/books/', help_text='gallery image')
-	view_count = models.IntegerField(default=0, help_text='number of times book has been viewed')
 	publish = models.BooleanField(default=True, help_text='make visible on site')
 	history = HistoricalRecords()
 	date_created = models.DateTimeField(auto_now_add=True)
