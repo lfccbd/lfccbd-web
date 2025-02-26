@@ -3,15 +3,15 @@ form.bg-white.p-3.shadow-1 {
     font-size: 15px;
 }
 
-form.bg-white.p-3.shadow-1  fieldset{
+form.bg-white.p-3.shadow-1 fieldset {
     margin-top: 20px;
 }
 
-form.bg-white.p-3.shadow-1  .submit-row{
+form.bg-white.p-3.shadow-1 .submit-row {
     margin-top: 30px;
 }
 
-.inline:nth-child(2){
+.inline:nth-child(2) {
     display: none !important;
     visibility: hidden;
 }
