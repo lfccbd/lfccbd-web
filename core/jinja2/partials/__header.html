@@ -1,0 +1,31 @@
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+        <a href="{{ url('home') }}" class="logo d-flex align-items-center me-auto">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <img src="{{ static('assets/img/logo.png') }}" alt="">
+            <h1 class="sitename d-flex flex-column justify-content-center align-items-start">
+                <span>LIVING FAITH CHURCH,</span>
+                <span>JOHANNESBURG CBD.</span>
+            </h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+
+            <ul>
+                <li><a href="{{ url('home') }}" {% if request.path == "/" %}class="active"{% endif %}>Home</a></li>
+                <li><a href="{{ url('about') }}" {% if "about" in request.path %}class="active"{% endif %}>About Us</a></li>
+                <li><a href="{{ url('testimonies') }}" {% if "testimonies" in request.path %}class="active"{% endif %}>Testimonies</a></li>
+                <li><a href="{{ url('ministries') }}"  {% if "ministries" in request.path %}class="active"{% endif %}>Ministries</a></li>
+                <li><a href="{{ url('resources') }}"  {% if "resources" in request.path %}class="active"{% endif %}>Resources</a></li>
+                {#
+                <li><a href="giving.html">Giving</a></li>
+                #}
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+        <a class="btn-getstarted" href="{{ url('contact') }}">Contact</a>
+
+    </div>
+</header>

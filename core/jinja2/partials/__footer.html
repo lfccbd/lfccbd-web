@@ -1,0 +1,63 @@
+<footer id="footer" class="footer light-background">
+
+    <div class="container footer-top">
+        <div class="row">
+
+            <div class="col-lg-4 col-md-6 footer-about d-flex flex-column justify-content-between">
+                <a href="{{ url('home') }}" class="logo d-flex align-items-center mt-3">
+                    <!-- Uncomment the line below if you also wish to use an image logo -->
+                    <img src="{{ static('assets/img/logo-footer.png') }}" alt="">
+                    <div class="sitename d-flex flex-column justify-content-center align-items-start ms-3">
+                        <span>LIVING FAITH CHURCH,</span>
+                        <span>CBD JOHANNESBURG</span>
+                    </div>
+                </a>
+                <div class="social-links d-flex mt-4">
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                    <a href=""><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-12 footer-contact mt-5 mt-lg-0">
+                <h4>GET IN TOUCH</h4>
+                <p>Our dedicated team is available to assist you with any questions, concerns, or
+                    requests you may have. 
+                </p>
+                <p>contact@winnerschapelcbd.com</p>
+            </div>
+
+            <div class="col-lg-5 col-md-12 footer-links ps-lg-4 mt-5 mt-lg-0">
+                <h4>QUICK LINKS</h4>
+                <div class="d-flex justify-content-between">
+                    <ul>
+                        <li><a href="{{ url('home') }}">Home</a></li>
+                        <li><a href="{{ url('about') }}">About us</a></li>
+                        <li><a href="{{ url('sunday_ministry') }}">Services</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="{{ url('resources') }}">Media</a></li>
+                        <li><a href="{{ url('prayer_request') }}">Prayer Request</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="{{ url('testimonies') }}">Testimonies</a></li>
+                        <li><a href="{{ url('ministries') }}">Ministries</a></li>
+                        <li><a href="{{ url('contact') }}">Contact Us</a></li>
+                        {#<li><a href="#">Online Giving</a></li>#}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    {# current year #}
+    {% now 'Y' as current_year %}
+
+    <div class="container copyright text-center mt-4">
+        <p><span> &#169;{{current_year}} All Rights Reserved</span></p>
+    </div>
+
+</footer>
