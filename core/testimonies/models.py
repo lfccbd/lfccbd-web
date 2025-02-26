@@ -45,3 +45,4 @@ class Testimony(models.Model):
 		verbose_name = 'Testimony'
 		verbose_name_plural = 'Testimonies'
 		ordering = ['-date_received']
+		permissions = [('import', 'Can import'), ('export', 'Can export')]

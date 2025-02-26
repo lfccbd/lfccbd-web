@@ -64,6 +64,7 @@ class Media(models.Model):
 		verbose_name = 'Media'
 		verbose_name_plural = 'Media'
 		ordering = ['-date_created']
+		permissions = [('import', 'Can import'), ('export', 'Can export')]
 
 
 class Book(models.Model):
@@ -94,3 +95,4 @@ class Book(models.Model):
 		verbose_name = 'Books'
 		verbose_name_plural = 'Books'
 		ordering = ['-date_created']
+		permissions = [('import', 'Can import'), ('export', 'Can export')]
