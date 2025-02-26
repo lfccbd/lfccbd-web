@@ -1,0 +1,30 @@
+form.bg-white.p-3.shadow-1 {
+    background: transparent;
+    font-size: 15px;
+}
+
+form.bg-white.p-3.shadow-1  fieldset{
+    margin-top: 20px;
+}
+
+form.bg-white.p-3.shadow-1  .submit-row{
+    margin-top: 30px;
+}
+
+.inline:nth-child(2){
+    display: none !important;
+    visibility: hidden;
+}
+
+.inline {
+    margin: auto;
+}
+
+a.flex.h-16.items-center.p-2 {
+    margin-bottom: 30px;
+}
+
+#qrcode img {
+    width: 500px !important;
+    margin: auto;
+}
