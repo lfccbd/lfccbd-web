@@ -6,9 +6,9 @@ from simple_history.models import HistoricalRecords
 from core.testimonies.models import generate_custom_id
 
 
-class Contacts(models.Model):
+class Contact(models.Model):
 	id = models.CharField(  # noqa: A003
-		default=generate_custom_id, editable=False, unique=True, max_length=15, primary_key=True
+		default=generate_custom_id, editable=False, unique=True, max_length=20, primary_key=True
 	)
 	full_name = pgcrypto.EncryptedCharField(max_length=100)
 	phone = pgcrypto.EncryptedCharField(max_length=254)
