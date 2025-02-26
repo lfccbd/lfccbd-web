@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.forms import Textarea, TextInput  # noqa: I101
 from pgcrypto import EncryptedCharField, EncryptedDateTimeField, EncryptedEmailField, EncryptedTextField
 
-from .models import Contacts
+from .models import Contact
 
 
 class ContactsMessageAdmin(admin.ModelAdmin):
@@ -39,4 +39,4 @@ class ContactsMessageAdmin(admin.ModelAdmin):
 		return super().formfield_for_dbfield(db_field, **kwargs)
 
 
-admin.site.register(Contacts, ContactsMessageAdmin)
+admin.site.register(Contact, ContactsMessageAdmin)
