@@ -243,15 +243,17 @@
 {% block pageScripts %}
     {{super()}}
     <script>
-        setTimeout(() => {
-            document.getElementById('msg-sucess').style.display= 'none';
-        }, 5000);
+        if( document.getElementById('msg-sucess')){
+            setTimeout(() => {
+                document.getElementById('msg-sucess').style.display= 'none';
+            }, 5000);
+        }
     </script>
     {% if form.errors %}
         <script>
             document.addEventListener("DOMContentLoaded", function(){
                 var myModal = new bootstrap.Modal(document.getElementById('testimonyForm')); 
-                myModal.show();  // ✅ Show the modal
+                myModal.show();
             });          
             
         </script>
