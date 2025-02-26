@@ -25,7 +25,7 @@ class ContactPage(CreateView):
 			super(ContactPage, self).form_valid(form)
 
 			# message
-			messages.success(request, 'Message sent successfully. A representative would respond to your message.')
+			messages.success(request, 'Message sent successfully. A representative would reach out to you.')
 
 			return HttpResponsePermanentRedirect(reverse_lazy(self.success_url))
 
@@ -33,6 +33,6 @@ class ContactPage(CreateView):
 		self.object = None
 
 		# message
-		messages.error(request, 'Invalid Form Field(s). Kindly check field(s) and try again; all fields are required.')
+		messages.error(request, 'Invalid Form Field(s). All fields are required.')
 		# Return class-based view form_invalid to generate form with errors
 		return self.form_invalid(form)
