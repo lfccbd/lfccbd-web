@@ -1,12 +1,12 @@
 from django.db.models import Q
 
 from core.post.models import EpistleOfMonth
-from core.resources.models import Books, Media
+from core.resources.models import Book, Media
 from core.testimonies.models import Testimony
 
 
 def search_books(search=None):
-	books = Books.objects.all()
+	books = Book.objects.all()
 
 	if search:
 		books = books.filter(
