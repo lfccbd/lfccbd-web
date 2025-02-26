@@ -1,6 +1,24 @@
 from django.contrib import admin
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 
 from .models import Book, ImageSlider, Media
+
+
+class MediaResource(resources.ModelResource):
+	class Meta:
+		model = Media
+		skip_unchanged = True
+		report_skipped = True
+		exclude = ['id', 'slug', 'date_created', 'history']
+
+
+class BookResource(resources.ModelResource):
+	class Meta:
+		model = Book
+		skip_unchanged = True
+		report_skipped = True
+		exclude = ['id', 'slug', 'date_created', 'history']
 
 
 class ImageSliderAdmin(admin.ModelAdmin):
@@ -54,7 +72,8 @@ class ImageSliderAdmin(admin.ModelAdmin):
 	]
 
 
-class MediaMessageAdmin(admin.ModelAdmin):
+class MediaMessageAdmin(ImportExportModelAdmin):
+	resource_class = MediaResource
 	list_display = [
 		'file_title',
 		'service',
@@ -86,7 +105,8 @@ class MediaMessageAdmin(admin.ModelAdmin):
 	]
 
 
-class BooksAdmin(admin.ModelAdmin):
+class BooksAdmin(ImportExportModelAdmin):
+	resource_class = BookResource
 	list_display = ['file_title', 'author', 'publish_year', 'publisher', 'isbn', 'publish']
 	list_display_links = ['file_title', 'author', 'publish_year', 'publisher', 'isbn']
 	list_filter = ['publish']

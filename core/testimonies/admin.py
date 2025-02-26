@@ -1,11 +1,22 @@
 from django.contrib import admin
 from django.forms import Textarea, TextInput  # noqa: I101
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 from pgcrypto import EncryptedCharField, EncryptedDateTimeField, EncryptedEmailField, EncryptedTextField
 
 from .models import Testimony
 
 
-class TestimonyMessageAdmin(admin.ModelAdmin):
+class TestimonyResource(resources.ModelResource):
+	class Meta:
+		model = Testimony
+		skip_unchanged = True
+		report_skipped = True
+		exclude = ['id', 'history']
+
+
+class TestimonyMessageAdmin(ImportExportModelAdmin):
+	resource_class = TestimonyResource
 	list_display = ['first_name', 'last_name', 'designation', 'date_received']
 	list_display_links = ['first_name', 'last_name', 'designation']
 	list_filter = ['publish']
