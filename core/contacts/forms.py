@@ -26,9 +26,15 @@ class Nh3CleanCharField(forms.CharField):
 
 
 class UserContactForm(forms.ModelForm):
-	full_name = Nh3CleanCharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Full Name'}))
-	phone = forms.IntegerField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Phone'}))
-	message = Nh3CleanCharField(required=True, widget=forms.Textarea(attrs={'placeholder': 'Your Message'}))
+	full_name = Nh3CleanCharField(
+		required=True, widget=forms.TextInput(attrs={'placeholder': 'Full Name', 'class': 'form-control'})
+	)
+	phone = forms.IntegerField(
+		required=True, widget=forms.TextInput(attrs={'placeholder': 'Phone', 'class': 'form-control'})
+	)
+	message = Nh3CleanCharField(
+		required=True, widget=forms.Textarea(attrs={'placeholder': 'Your Message', 'class': 'form-control', 'row': 8})
+	)
 	captcha = ReCaptchaField(widget=ReCaptchaV3())
 
 	class Meta:
