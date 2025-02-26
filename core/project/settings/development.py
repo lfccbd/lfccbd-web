@@ -1,4 +1,4 @@
-from core.project.settings import DEBUG, ENV, INSTALLED_APPS, MIDDLEWARE, SECRET_KEY  # type: ignore
+from core.project.settings import BASE_DIR, DEBUG, ENV, INSTALLED_APPS, MIDDLEWARE, SECRET_KEY  # type: ignore
 
 # Secrete key
 SECRET_KEY = SECRET_KEY
@@ -37,3 +37,8 @@ INTERNAL_IPS = ['127.0.0.1']
 CORS_ALLOWED_ORIGINS = [
 	'http://localhost:8000',
 ]
+
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = f'{BASE_DIR}/core/media'

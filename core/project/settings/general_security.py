@@ -23,7 +23,7 @@ DEFENDER_REVERSE_PROXY_HEADER = ENV.config('DEFENDER_REVERSE_PROXY_HEADER')
 DEFENDER_BEHIND_REVERSE_PROXY = ENV.config('DEFENDER_BEHIND_REVERSE_PROXY', cast=bool)
 
 # CSP Settings
-CSP_DEFAULT_SRC = ("'none'",)
+CSP_DEFAULT_SRC = ("'self'",)
 CSP_SCRIPT_SRC = (
 	"'self'",
 	'https://www.google.com',
@@ -37,7 +37,14 @@ CSP_SCRIPT_SRC = (
 	'blob:',
 )  # noqa: E501
 CSP_CONNECT_SRC = "'self'"
-CSP_FONT_SRC = ("'self'", 'https://fonts.gstatic.com', 'https://fonts.googleapis.com', 'https://use.fontawesome.com')
+CSP_FONT_SRC = (
+	"'self'",
+	'https://fonts.gstatic.com',
+	'https://fonts.googleapis.com',
+	'https://use.fontawesome.com',
+	'https://www.google.com/',
+	'data:',
+)
 CSP_STYLE_SRC = ("'self'", "'unsafe-inline'")
 CSP_STYLE_SRC_ELEM = (
 	"'self'",
@@ -46,11 +53,14 @@ CSP_STYLE_SRC_ELEM = (
 	'https://use.fontawesome.com',
 	"'unsafe-inline'",
 )  # noqa: E501
+CSP_MANIFEST_SRC = "'self'"
 CSP_IMG_SRC = ("'self'", 'https://validator.swagger.io/', 'blob:', 'data:')
 CSP_MEDIA_SRC = ("'self'",)
 CSP_FORM_ACTION = "'self'"
 CSP_BASE_URI = ("'none'",)
 CSP_FRAME_ANCESTORS = ("'none'",)
+CSP_FRAME_SRC = ("'self'", 'https://www.google.com')
+
 # exclude admin path
 CSP_EXCLUDE_URL_PREFIXES = (f'/{ADMIN_PATH}/',)
 # report url
