@@ -35,6 +35,7 @@ INSTALLED_APPS = [
 	# third party apps by position
 	'django_prose_editor',
 	'simple_history',
+	'import_export',
 	'defender',
 	# OTP
 	'django_otp',
