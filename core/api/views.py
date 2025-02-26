@@ -3,7 +3,7 @@ from typing import List
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from ninja.pagination import PageNumberPagination, paginate
 
-from core.contacts.models import Contacts
+from core.contacts.models import Contact
 from core.post.models import (
     BookmarkedEpistleOfMonth,
     BookmarkedUpcomingService,
@@ -15,7 +15,7 @@ from core.post.models import (
     VerseOfDay,
     WordOfDay,
 )
-from core.resources.models import Books, ImageSliders, Media
+from core.resources.models import Book, ImageSlider, Media
 from core.testimonies.models import Testimony
 
 from .api_router import router
@@ -51,7 +51,7 @@ def get_sliders(request):
     """
     Get a list of image sliders and their text.
     """
-    response = ImageSliders.objects.all()
+    response = ImageSlider.objects.all()
     return response
 
 
@@ -62,7 +62,7 @@ def create_message(request, data: ContactCreateSchema):
     """
     Create contact message
     """
-    response = Contacts.objects.create(
+    response = Contact.objects.create(
         full_name=data.full_name,
         phone=data.phone,
         message=data.message,
@@ -86,7 +86,7 @@ def get_books(request):
     """
     Get a list of all books
     """
-    response = Books.objects.all()
+    response = Book.objects.all()
     return response
 
 
