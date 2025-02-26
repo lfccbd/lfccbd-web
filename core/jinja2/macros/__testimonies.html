@@ -1,0 +1,29 @@
+{% macro testimonymodel(id, message, testifier_title, testifier_first_name, testifier_last_name, testifier_location, testifier_date) -%}
+    <!-- Modal -->
+    <div class="modal fade {{id}}" id="{{id}}" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body py-4 px-4">
+                    <div class="testimony-card">
+                        <h3><img src="{{ static('assets/img/logo-red-small.png') }}" class="me-3" alt="">Financial BreakThrough</h3>
+                        <p class="mt-4">
+                            {{message}}
+                        </p>
+            
+                        <div class="testimony-card-footer mt-3 d-flex align-items-end justify-content-between">
+                            <div class="d-flex">
+                                <img src="{{ static('assets/img/testimony-logo.png') }}" class="img-fluid me-3" alt="">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h4>{{testifier_title}} {{testifier_last_name}} {{testifier_first_name}}</h4>
+                                    <small>{{testifier_location|truncate(27, true)}}</small>
+                                </div>
+                            </div>
+                            <small>{{testifier_date}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{%- endmacro %}

@@ -1,0 +1,85 @@
+{% macro bookmodal(id, title, author, gnere, publisher, published_year, isbn, foreward, featuredimageurl, imageoneurl, imagetwourl, related_books_list) -%}
+    <div class="modal fade product-detail" id="{{id}}" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-body py-4 px-4">
+                    <div class="container my-3">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="main-img">
+                                    <img class="img-fluid" src="{{ featuredimageurl }}" alt="Products">
+                                </div>
+                                <div class="row my-3 previews">
+                                    <div class="col-md-4 preview-card">
+                                        <img class="w-100" src="{{ imageoneurl }}" alt="Sale">
+                                    </div>
+                                    <div class="col-md-4 preview-card">
+                                        <img class="w-100" src="{{ imagetwourl }}" alt="Sale">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9 px-1">
+                                <div class="main-description">
+                                    <div class="product-title text-bold text-center text-md-start my-3">
+                                        {{title}}
+                                    </div>
+
+                                    <div class="d-flex flex-column product-mata-data mt-4">
+                                        <div class="d-flex flex-column flex-md-row align-items-center mb-2">
+                                            <div class="card mb-2 mb-md-0 me-0 me-md-3">Author</div>
+                                            <div>{{author}}</div>
+                                        </div>
+                                        <div class="d-flex flex-column flex-md-row align-items-center my-2">
+                                            <div class="card mb-2 mb-md-0 me-0 me-md-3">Published</div>
+                                            <div>{{published_year}}</div>
+                                        </div>
+                                        <div class="d-flex flex-column flex-lg-row my-2">
+                                            <div class="d-flex flex-column flex-md-row align-items-center me-md-5">
+                                                <div class="card mb-2 mb-md-0 me-0 me-md-3">Published By</div>
+                                                <div>{{publisher}}</div>
+                                            </div>
+                                            <div class="d-flex flex-column flex-md-row align-items-center mt-2 mt-lg-0">
+                                                <div class="card mb-2 mb-md-0 me-0 me-md-3">ISBN</div>
+                                                <div class="isbn-text">{{isbn}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-details my-4">
+                                    <p class="details-title mb-1">Foreword</p>
+                                    <p class="description mb-0">
+                                        {{foreward}}
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if related_books_list %}
+                        <div class="container similar-products mb-5">
+                            <div class="row">
+                                {% for related_book in related_books_list %}
+                                    {% if gnere == related_book.gnere and related_book.file_title != title %}
+                                        {% if loop.first %}
+                                            <p class="display-5">Similar Books</p>
+                                        {% endif %}
+
+                                        {% if loop.index0 <= 3%}
+                                            <div class="col-md-2">
+                                                <div class="similar-product">
+                                                    <img class="img-fluid" src="{{ related_book.featured_image.url }}" alt="Preview">
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>    
+{%- endmacro %}
