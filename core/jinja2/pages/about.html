@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{# override meta block #}
+{% block pageMeta %}
+    <title>About - Winners Chapel CBD</title>
+    <meta name="description"
+        content="Winners Chapel International, Johannesburg CBD, is a branch of the Living Faith Church Worldwide. Living Faith Church Worldwide,also known as Winners’ Chapel International is an end time liberation Ministry presided over byBishop David O. Oyedepo with worldwide headquarters in Canaan Land, Ota, Nigeria."
+    <meta name="keywords"
+        content="liviing faith church, liviing faith church cbd, liviing faith church johannesburg, liviing faith church south africa, lfc johannesburg, lfc cbd, winners chapel cbd jhb, bishop david oyedepo, prayers, prayer requests, faith tarbanacle">
+{% endblock pageMeta %}
+
+<!-- Fonts -->
+{% block fonts %}
+  {{super()}}
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+{% endblock fonts %}
+
+
+{% block pageContent %}
+    <!-- About Section -->
+    <section id="about-winners" class="about-winners section">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col text-center px-lg-5">
+                    <h1>ABOUT <span class="text-red">WINNERS</span> CHAPEL</h1>
+                    <p class="mx-lg-5 px-lg-5">
+                        Winners Chapel International, Johannesburg CBD, is a branch of the Living Faith Church Worldwide.
+                        Living Faith Church Worldwide,also known as Winners' Chapel International is an end time
+                        liberation Ministry presided over byBishop David O. Oyedepo with worldwide headquarters in Canaan
+                        Land, Ota, Nigeria.</p>
+                </div>
+            </div>
+
+            <div class="row mandate">
+                <div class="col-lg-7 pe-lg-4 d-flex flex-column justify-content-center order-last order-lg-first">
+                    <h3>The Mandate</h3>
+                    <h2>
+                        “<span class="text-red">The time</span> has come to <span class="text-red">liberate the world</span>
+                        from
+                        from every Oppression of the Devil”.
+                    </h2>
+                    <p>
+                        Our Mandate for ministry was received from the LORD Himself in an 18-hour vision. During this
+                        vision, a commission was received from the LORD to liberate mankind in all facets of human
+                        existence, to restore broken destinies, and to bring healing to the sick and brokenhearted.
+
+                        Today, testimonies of liberation through our messages, books, tapes, magazines and other periodicals
+                        are most humbling. The word of faith is working like fire for the liberation of mankind across the
+                        nations.
+                    </p>
+                </div>
+                <div class="col-lg-5 order-first order-lg-last d-flex justify-content-md-center mb-5 mb-lg-0">
+                    <img src="{{ static('assets/img/mandate.png') }}" class="img-fluid" alt="">
+                </div>
+            </div>
+
+            <div class="row set-man">
+                <div class="col-lg-5 d-flex justify-content-md-center mb-5 mb-lg-0">
+                    <img src="{{ static('assets/img/speaker.png') }}" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-7 ps-lg-4 d-flex flex-column justify-content-center">
+                    <h3>The Set Man</h3>
+                    <h2>
+                        “And <span class="text-red">I am sending you, David</span> to Undertake this Task”.
+                    </h2>
+                    <p>
+                        Bishop David O. Oyedepo received a call into the ministry through a heavenly vision, where he saw a
+                        lineup of battered, beaten, tattered, deformed, groaning for escape, he began sobbing with the. In
+                        response to his question, ‘but why Lord?’ God answered, “But from the beginning it was not so, and
+                        now the hour has come to liberate the whole world from all oppression of the devil through the
+                        preaching of the world of faith and I AM sending you to undertake this task.”
+                    </p>
+                    <p>
+                        Today, he stands as an Apostle of Faith to the nations, the impact of whose ministry has continued
+                        to spread across many nations of the world. As an accomplished author, he has written over 100
+                        titles, which circulates both in hard and online stores around the world. A number of these titles
+                        have been translated to other major languages of the world including French, Chinese, Spanish and
+                        others.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row pillars">
+                <div class="col-lg-7 pe-lg-4 d-flex flex-column justify-content-center order-last order-lg-first">
+                    <h3>The 12 Pillars</h3>
+                    <p>
+                        God commissioned the presiding Bishop of this commission with a Word of Faith ministry to our
+                        generation. As inspired by the Holy Ghost, the servant of God,
+                        Dr. David Oyedepo, has classifed the Word of Faith into specific areas of emphasis.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-start mt-4">
+                        <div class="item text-red">FAITH</div>
+                        <div class="item">THE WORD</div>
+                        <div class="item text-red">THE SUPERNATURAL</div>
+                        <div class="item">THE HOLYSPIRIT</div>
+                        <div class="item text-red">PRAISE</div>
+                        <div class="item text-red">SUCCESS</div>
+                        <div class="item">VISION</div>
+                        <div class="item text-red">PROSPERITY</div>
+                        <div class="item text-red">PRAYER</div>
+                        <div class="item">CONSECRATION</div>
+                        <div class="item text-red">WISDOM</div>
+                        <div class="item">PRAYER</div>
+                        <div class="item text-red">HEALING</div>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-first order-lg-last d-flex justify-content-md-center mb-5 mb-lg-0">
+                    <img src="{{ static('assets/img/12-pillars.png') }}" class="img-fluid" alt="">
+                </div>
+            </div>
+
+        </div>
+
+    </section><!-- /About Section -->
+{% endblock pageContent %}
