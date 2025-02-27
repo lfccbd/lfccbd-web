@@ -1,9 +1,9 @@
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login
+from django_otp.plugins.otp_static.models import StaticDevice, StaticToken
 from django_otp.plugins.otp_totp.models import TOTPDevice
-from django.contrib import messages
-from django_otp.plugins.otp_static.models import StaticToken, StaticDevice
 
 from core.project.settings import ADMIN_PATH
 
