@@ -70,11 +70,6 @@ CSP_REPORT_URI = ENV.config('SENTRY_REPORT_URL')
 # logout after x minutes of inactivity
 AUTO_LOGOUT = {'IDLE_TIME': ENV.config('AUTO_LOGOUT_IDLE_TIME', cast=int)}
 
-# Captcha settings
-RECAPTCHA_PUBLIC_KEY = ENV.config('RECAPTCHA_PUBLIC_KEY')
-RECAPTCHA_PRIVATE_KEY = ENV.config('RECAPTCHA_PRIVATE_KEY')
-RECAPTCHA_REQUIRED_SCORE = ENV.config('RECAPTCHA_REQUIRED_SCORE', cast=float)
-
 # NH3 settings
 NH3_ALLOWED_TAGS = ast.literal_eval(ENV.config('NH3_ALLOWED_TAGS'))
 NH3_ALLOWED_ATTRIBUTES = ast.literal_eval(ENV.config('NH3_ALLOWED_ATTRIBUTES'))
