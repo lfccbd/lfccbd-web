@@ -4,15 +4,16 @@ from django.contrib.admin.models import LogEntry
 from django.contrib.auth import get_user_model
 from django.urls import include, path
 from django.views.generic import RedirectView
+from project.settings.utils.otp import CustomAdminLoginView  # type: ignore
 
-from core.project.settings import DEBUG  # type: ignore
-from core.project.settings import MEDIA_ROOT, MEDIA_URL  # type: ignore
+from core.project.settings import ADMIN_PATH, DEBUG, MEDIA_ROOT, MEDIA_URL  # type: ignore
 
 User = get_user_model()
 
 
 urlpatterns = [
-	path('admin/', admin.site.urls),
+	path(f'{ADMIN_PATH}/login/', CustomAdminLoginView.as_view(), name='admin_login'),
+	path(f'{ADMIN_PATH}/', admin.site.urls),
 	path('api/', include('core.api.urls')),
 	path('contact/', include('core.contacts.urls')),
 	path('resources/', include('core.resources.urls')),
