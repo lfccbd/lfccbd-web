@@ -39,7 +39,7 @@ CSP_SCRIPT_SRC = (
     'https://fonts.googleapis.com',
     'https://use.fontawesome.com',
     'https://ajax.googleapis.com',
-    'https://lfccbd.blr1.digitaloceanspaces.com',
+    'https://lfccdb.fra1.digitaloceanspaces.com',
     "'unsafe-inline'",
     'blob:',
 )  # noqa: E501
@@ -58,18 +58,18 @@ CSP_STYLE_SRC_ELEM = (
     'https://fonts.gstatic.com',
     'https://fonts.googleapis.com',
     'https://use.fontawesome.com',
-    'https://lfccbd.blr1.digitaloceanspaces.com',
+    'https://lfccdb.fra1.digitaloceanspaces.com',
     "'unsafe-inline'",
 )  # noqa: E501
 CSP_MANIFEST_SRC = "'self'"
 CSP_IMG_SRC = (
     "'self'",
     'https://validator.swagger.io/',
-    'https://lfccbd.blr1.digitaloceanspaces.com',
+    'https://lfccdb.fra1.digitaloceanspaces.com',
     'blob:',
     'data:',
 )
-CSP_MEDIA_SRC = ("'self'", 'https://lfccbd.blr1.digitaloceanspaces.com')
+CSP_MEDIA_SRC = ("'self'", 'https://lfccdb.fra1.digitaloceanspaces.com')
 CSP_FORM_ACTION = "'self'"
 CSP_BASE_URI = ("'none'",)
 CSP_FRAME_ANCESTORS = ("'none'",)
