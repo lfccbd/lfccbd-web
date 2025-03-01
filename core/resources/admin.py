@@ -125,7 +125,7 @@ class BooksAdmin(ImportExportModelAdmin):
 			'General Information',
 			{
 				'classes': ['wide', 'extrapretty'],
-				'fields': ['file_title', 'author', 'foreward'],
+				'fields': ['file_title', 'author', 'foreward', 'gnere'],
 			},
 		],
 		[
