@@ -38,9 +38,9 @@ superuser:
 	poetry run python -m core.manage createsuperuser
 
 
-.PHONY:unit-test
-unit-test:
-	poetry run python -m core.manage test --exclude-tag=integration
+.PHONY:test
+test:
+	poetry run python -m core.manage test
 
 
 .PHONY:setup
