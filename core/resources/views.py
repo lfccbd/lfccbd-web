@@ -1,11 +1,14 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
 from django.views import View
+from django.views.decorators.cache import cache_page
 
 from .models import Book, Media
 
 
+@method_decorator(cache_page(60 * 10), name='dispatch')
 class ResourcesListView(View):
     template_name = 'resources/resources.html'
 
