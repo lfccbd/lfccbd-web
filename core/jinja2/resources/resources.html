@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {# import testimony macro #}
-{% from 'macros/__audioplayer.html' import audiomodal as audiomodelmacro %}
+{% from 'macros/__audioplayer.html' import audiomodal as audiomodalmacro %}
 {% from 'macros/__videoplayer.html' import videomodal as videomodalmacro %}
 {% from 'macros/__bookmodel.html' import bookmodal as bookmodalmacro %}
 
@@ -122,9 +122,9 @@
                                                         <div class="result">
                                                             <div><img src="{{ static('assets/img/logo-red-small.png') }}"
                                                                     class="me-2" alt="">
-                                                                {{ media.file_title|truncate(29, true)}}
+                                                                {{ media.file_title|truncate(25, false)}}
                                                             </div>
-                                                            <div>{{media.service|truncate(29, true)}}</div>
+                                                            <div>{{media.service|truncate(21, true)}}</div>
                                                             <div>{{media.message_date.strftime('%d-%m-%y')}}</div>
                                                             {% if media.media_format == 'Video' or media.media_format == 'Audio' %}
                                                                 <div>{{media.resource_file.name|media_duration}}</div>
@@ -189,13 +189,13 @@
                                 <nav aria-label="..." class="mt-4">
                                     <ul class="pagination">
                                         {# init total pages #}
-                                        {% set pagesNum = book_page_obj.paginator.page_range|count + 1 %}
+                                        {% set pagesNum = media_page_obj.paginator.page_range|count + 1 %}
                                         {# init total items in the pagination #}
-                                        {% set totalItems = book_page_obj.paginator.count %}
+                                        {% set totalItems = media_page_obj.paginator.count %}
                                         {# init start number for the pagination range #}
                                         {% set starterCount = 1 %}
                                         {# init current page in the pagination #}
-                                        {% set currentPage = book_page_obj.number  %}
+                                        {% set currentPage = media_page_obj.number  %}
                                         {# number of items to show in page per time #}
                                         {% set controller = 4 %}
                                         {# set the range of the pagination per time#}
@@ -203,7 +203,7 @@
 
                                         {# set left navigation link #}
                                         {% set previous_pagination_link = "" %}
-                                        {% if book_page_obj.number - 1  >  0 %}
+                                        {% if media_page_obj.number - 1  >  0 %}
                                             {% set previous_pagination_link = previous_pagination_link + "?media_page=" + (currentPage - 1)|string %}
                                         {% else %}
                                             {% set previous_pagination_link = previous_pagination_link + "#" %}
@@ -376,25 +376,24 @@
 
                             <div class="row g-3 products-list mt-5">
                                 {% for book in book_page_obj if book_page_obj %}
-                                <div class="col-lg-3">
-                                    <a href="#" class="text-center" data-bs-toggle="modal" data-bs-target="#{{book.id}}">
-                                        <div class="product-item h-100">
-                                            <img src="{{ book.featured_image.url }}" class="img-fluid" alt="">
-                                            <h4>{{ book.file_title }}</h4>
-                                        </div>
-                                    </a>
-                                </div>
+                                    <div class="col-lg-3">
+                                        <a href="#" class="text-center" data-bs-toggle="modal" data-bs-target="#{{book.id}}">
+                                            <div class="product-item h-100">
+                                                <img src="{{ book.featured_image.url }}" class="img-fluid" alt="">
+                                                <h4>{{ book.file_title }}</h4>
+                                            </div>
+                                        </a>
+                                    </div>
                                 {% else %}
-                                <div class="col-lg-3">
-                                    <a href="#" class="text-center" data-bs-toggle="modal" data-bs-target="#productDetail">
-                                        <div class="product-item h-100">
-                                            <img src="{{ static('assets/img/products/book-2.png') }}" class="img-fluid"
-                                                alt="">
-                                            <h4>No Recent Publication Listings Found</h4>
-                                        </div>
-                                    </a>
-                                </div>
-
+                                    <div class="col-lg-3">
+                                        <a href="#" class="text-center" data-bs-toggle="modal" data-bs-target="#productDetail">
+                                            <div class="product-item h-100">
+                                                <img src="{{ static('assets/img/products/book-2.png') }}" class="img-fluid"
+                                                    alt="">
+                                                <h4>No Recent Publication Listings Found</h4>
+                                            </div>
+                                        </a>
+                                    </div>
                                 {% endfor %}
                             </div>
         
