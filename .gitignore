@@ -6,7 +6,8 @@ __pycache__/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-media
+media/
+migrations
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.
@@ -39,6 +40,8 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+node_modules
+.ruff_cache
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -167,3 +170,7 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+# vscode
+.vscode
+TODO.md
