@@ -1,5 +1,6 @@
 from typing import List
 
+from api.schemas.prayers import PrayerCreateSchema, PrayerSchema
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from ninja.pagination import PageNumberPagination, paginate
 
@@ -15,10 +16,12 @@ from core.post.models import (
     VerseOfDay,
     WordOfDay,
 )
+from core.prayers.models import PrayerRequest
 from core.resources.models import Book, ImageSlider, Media
 from core.testimonies.models import Testimony
 
 from .api_router import router
+from .schemas.contacts import ContactCreateSchema, ContactSchema
 from .schemas.posts import (
     BookmarkedEpistleOfMonthSchema,
     BookmarkedUpcomingServiceSchema,
@@ -32,8 +35,6 @@ from .schemas.posts import (
 )
 from .schemas.resources import (
     BookSchema,
-    ContactCreateSchema,
-    ContactSchema,
     MediaSchema,
     SliderSchema,
 )
@@ -55,10 +56,25 @@ def get_sliders(request):
     return response
 
 
+@router.post('/prayer/', response=List[PrayerSchema])
+@ensure_csrf_cookie
+@csrf_exempt
+def create_prayer_message(request, data: PrayerCreateSchema):
+    """
+    Send prayer request
+    """
+    response = PrayerRequest.objects.create(
+        first_name=data.first_name,
+        last_name=data.last_name,
+        prayer=data.prayer,
+    )
+    return response
+
+
 @router.post('/contact/', response=List[ContactSchema])
 @ensure_csrf_cookie
 @csrf_exempt
-def create_message(request, data: ContactCreateSchema):
+def create_contact_message(request, data: ContactCreateSchema):
     """
     Create contact message
     """
