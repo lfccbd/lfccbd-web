@@ -2,7 +2,8 @@ from datetime import datetime
 import json
 
 from ffmpeg import FFmpeg
-from project.settings import BASE_DIR
+
+from core.project.settings import BASE_DIR
 
 
 def int_comma(value):

@@ -1,9 +1,9 @@
 from typing import List
 
-from api.schemas.prayers import PrayerCreateSchema, PrayerSchema
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from ninja.pagination import PageNumberPagination, paginate
 
+from core.api.schemas.prayers import PrayerCreateSchema, PrayerSchema
 from core.contacts.models import Contact
 from core.post.models import (
     BookmarkedEpistleOfMonth,

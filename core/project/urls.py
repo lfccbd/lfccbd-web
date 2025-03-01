@@ -4,10 +4,10 @@ from django.contrib.admin.models import LogEntry
 from django.contrib.auth import get_user_model
 from django.urls import include, path
 from django.views.generic import RedirectView
-from project.settings.utils.otp import CustomAdminLoginView  # type: ignore
 
 from core.project.settings import ADMIN_PATH, DEBUG  # type: ignore
 from core.project.settings.development import MEDIA_ROOT, MEDIA_URL  # type: ignore
+from core.project.settings.utils.otp import CustomAdminLoginView  # type: ignore
 
 User = get_user_model()
 
