@@ -18,7 +18,7 @@ class BookResource(resources.ModelResource):
         model = Book
         skip_unchanged = True
         report_skipped = True
-        exclude = ['id', 'slug', 'date_created', 'history']
+        exclude = ['slug', 'date_created', 'history']
 
 
 class ImageSliderAdmin(admin.ModelAdmin):
