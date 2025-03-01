@@ -6,37 +6,40 @@ from django.urls import include, path
 from django.views.generic import RedirectView
 from project.settings.utils.otp import CustomAdminLoginView  # type: ignore
 
-from core.project.settings import ADMIN_PATH, DEBUG, MEDIA_ROOT, MEDIA_URL  # type: ignore
+from core.project.settings import ADMIN_PATH, DEBUG  # type: ignore
+from core.project.settings.development import MEDIA_ROOT, MEDIA_URL  # type: ignore
 
 User = get_user_model()
 
 
 urlpatterns = [
-	path(f'{ADMIN_PATH}/login/', CustomAdminLoginView.as_view(), name='admin_login'),
-	path(f'{ADMIN_PATH}/', admin.site.urls),
-	path('api/', include('core.api.urls')),
-	path('contact/', include('core.contacts.urls')),
-	path('resources/', include('core.resources.urls')),
-	path('testimonies/', include('core.testimonies.urls')),
-	path('prayer/', include('core.prayers.urls')),
-	path('', include('core.pages.urls')),
-	path('favicon.ico', RedirectView.as_view(url='/static/assets/favicons/favicon.ico')),
+    path(f'{ADMIN_PATH}/login/', CustomAdminLoginView.as_view(), name='admin_login'),
+    path(f'{ADMIN_PATH}/', admin.site.urls),
+    path('api/', include('core.api.urls')),
+    path('contact/', include('core.contacts.urls')),
+    path('resources/', include('core.resources.urls')),
+    path('testimonies/', include('core.testimonies.urls')),
+    path('prayer/', include('core.prayers.urls')),
+    path('', include('core.pages.urls')),
+    path(
+        'favicon.ico', RedirectView.as_view(url='/static/assets/favicons/favicon.ico')
+    ),
 ]
 
 
 # Add paths in debug mode
 if DEBUG:
-	import debug_toolbar
+    import debug_toolbar
 
-	urlpatterns += [
-		path('__debug__/', include(debug_toolbar.urls)),
-	] + static(MEDIA_URL, document_root=MEDIA_ROOT)
+    urlpatterns += [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
 
 
-# Inherit from the existing admin site class
+# # Inherit from the existing admin site class
 class OTPAdminSite(admin.site.__class__):
-	def get_log_entries(self, request):
-		return LogEntry.objects.all().order_by('-action_time')
+    def get_log_entries(self, request):
+        return LogEntry.objects.all().order_by('-action_time')
 
 
 # Enforce 2FA.
