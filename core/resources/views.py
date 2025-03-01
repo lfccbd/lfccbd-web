@@ -44,6 +44,7 @@ class ResourcesListView(View):
                     (
                         Q(file_title__icontains=search_query)
                         | Q(service__icontains=search_query)
+                        | Q(sermon_type__icontains=search_query)
                     )
                     & Q(category__icontains=search_section)
                 )
