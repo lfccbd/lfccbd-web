@@ -127,7 +127,7 @@
                                                             <div>{{media.service|truncate(21, true)}}</div>
                                                             <div>{{media.message_date.strftime('%d-%m-%y')}}</div>
                                                             {% if media.media_format == 'Video' or media.media_format == 'Audio' %}
-                                                                <div>{{media.resource_file.name|media_duration}}</div>
+                                                                <div>{{media.media_format}}</div>
                                                             {% else %}
                                                                 <div>Document File</div>
                                                             {% endif %}
