@@ -36,7 +36,7 @@ def date_format(value):
 
 def media_duration(value, args='Video'):
     # get probe in json
-    file_path = f'{settings.MEDIA_URL}/media/{value}'
+    file_path = f'{settings.MEDIA_URL}/{value}'
     ffprobe = FFmpeg(executable='ffprobe').input(
         file_path, print_format='json', show_streams=None
     )
