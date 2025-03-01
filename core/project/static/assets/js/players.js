@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Reset video when modal is closed
-    document.getElementById('audioPlayerModal').addEventListener('hide.bs.modal', () => {
+    document.querySelector('.audioPlayerModal').addEventListener('hide.bs.modal', () => {
         pauseAudio();
     });
 });
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Reset video when modal is closed
-    document.getElementById('videoPlayerModal').addEventListener('hide.bs.modal', () => {
+    document.querySelector('.videoPlayerModal').addEventListener('hide.bs.modal', () => {
         pauseVideo();
     });
 });
