@@ -100,21 +100,21 @@
 
 
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">FullName (Surname First)</label>
+                                <label for="id_fullname" class="form-label">Full Name (Surname First)</label>
                                 {{form.full_name}}
                                 {% if form.full_name.errors %}
                                     <span class="text-red" style="opacity: .8;">{{form.full_name.errors|striptags}}</span>
                                 {% endif %}
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+                                <label for="id_phone" class="form-label">Phone Number</label>
                                 {{form.phone}}
                                 {% if form.phone.errors %}
                                     <span class="text-red" style="opacity: .8;">{{form.phone.errors|striptags}}</span>
                                 {% endif %}
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Compose Message</label>
+                                <label for="id_message" class="form-label">Compose Message</label>
                                 {{form.message}}
                                 {% if form.message.errors %}
                                     <span class="text-red" style="opacity: .8;">{{form.message.errors|striptags}}</span>
