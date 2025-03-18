@@ -19,7 +19,7 @@ class TestimonyResource(resources.ModelResource):
         model = Testimony
         skip_unchanged = True
         report_skipped = True
-        exclude = ['id', 'history']
+        exclude = ['history']
 
 
 class TestimonyMessageAdmin(ImportExportModelAdmin):
