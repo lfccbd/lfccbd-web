@@ -86,7 +86,7 @@ class Media(models.Model):
     class Meta:
         verbose_name = 'Media'
         verbose_name_plural = 'Media'
-        ordering = ['-date_created']
+        ordering = ['-message_date']
         permissions = [('import', 'Can import'), ('export', 'Can export')]
 
 
