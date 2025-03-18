@@ -1,8 +1,4 @@
 from datetime import datetime
-import json
-
-from django.conf import settings
-from ffmpeg import FFmpeg
 
 
 def int_comma(value):
@@ -32,25 +28,3 @@ def date_format(value):
         suffix = {1: 'st', 2: 'nd', 3: 'rd'}.get(date.day % 10, 'th')
 
     return date.strftime(f'%d{suffix} %b %Y')
-
-
-def media_duration(value, args='Video'):
-    # get probe in json
-    file_path = f'{settings.MEDIA_URL}{value}'
-    ffprobe = FFmpeg(executable='ffprobe').input(
-        file_path, print_format='json', show_streams=None
-    )
-
-    # media metrix output
-    media = json.loads(ffprobe.execute())
-
-    # get duration
-    duration = int(float(media['streams'][0]['duration']))
-
-    # get duration time in HH:MM:SS
-    hours = duration // 3600
-    minutes = (duration % 3600) // 60
-    remaining_seconds = duration % 60
-    duration_time = f'{hours:02}:{minutes:02}:{remaining_seconds:02}'
-
-    return duration_time
