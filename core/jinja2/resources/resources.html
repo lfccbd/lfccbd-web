@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 
 {# import testimony macro #}
-{% from 'macros/__audioplayer.html' import audiomodal as audiomodalmacro %}
-{% from 'macros/__videoplayer.html' import videomodal as videomodalmacro %}
 {% from 'macros/__bookmodel.html' import bookmodal as bookmodalmacro %}
 
 {# override meta block #}
@@ -30,7 +28,6 @@
 
 {# pageContent block override #}
 {% block pageContent %}
-
     <section id="ministries" class="ministries resources section">
         <div class="container">
 
@@ -39,10 +36,12 @@
                     <img src="{{ static('assets/img/logo-red.png') }}" class="img-fluid mb-3" alt="">
                     <h1>RESOURCES</h1>
                     <p class="px-lg-5 mx-lg-5 mt-3">
-                        Winners JHB CBD provides a variety of downloadable media resources to support spiritual growth. 
-                        These include audio sermons, teachings, and video messages from our services. All resources are accessible 
-                        to members and visitors alike. Simply browse through the available media, select your desired content, 
-                        and download it for personal use. We encourage you to engage with these teachings as they are a 
+                        Winners JHB CBD provides a variety of downloadable media resources to support spiritual growth.
+                        These include audio sermons, teachings, and video messages from our services. All resources are
+                        accessible
+                        to members and visitors alike. Simply browse through the available media, select your desired
+                        content,
+                        and download it for personal use. We encourage you to engage with these teachings as they are a
                         source spiritual empowerment.
                     </p>
                 </div>
@@ -68,11 +67,13 @@
                                 <div class="col-md-8 offset-md-2">
                                     <form action="#" method="get">
                                         <div class="search-form">
-                                            <input type="text" name="search" placeholder="{% if request.GET.get('search') and request.GET.get('section') == 'sermons' %}{{request.GET.get('search')}} {% else %} Search{% endif %}">
+                                            <input type="text" name="search"
+                                                placeholder="{% if request.GET.get('search') and request.GET.get('section') == 'sermons' %}{{request.GET.get('search')}} {% else %} Search{% endif %}">
                                             <input type="hidden" name="section" value="sermons">
-                                            <button type="submit" class="btn"><img src="{{ static('assets/img/icon-search.png') }}"></button>
+                                            <button type="submit" class="btn"><img
+                                                    src="{{ static('assets/img/icon-search.png') }}"></button>
                                         </div>
-                                       
+
                                     </form>
                                 </div>
                             </div>
@@ -81,7 +82,8 @@
                                 <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
                                     <div class="quick-link">
                                         <a href="/resources/?search=One+Night+With+the+King&section=sermons">
-                                            <img src="{{ static('assets/img/quick-links/5.jpg') }}" class="img-fluid" alt="">
+                                            <img src="{{ static('assets/img/quick-links/5.jpg') }}" class="img-fluid"
+                                                alt="">
                                             <span>One Night With the King</span>
                                         </a>
                                     </div>
@@ -89,7 +91,7 @@
                                 <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
                                     <div class="quick-link">
                                         <a href="/resources/?search=Mid+week+Service&section=sermons">
-                                            <img src="{{ static('assets/img/search-2.png') }}" class="img-fluid" alt="">
+                                            <img src="{{ static('assets/img/DSC_8567.jpg') }}" class="img-fluid" alt="">
                                             <span>Mid-week Services</span>
                                         </a>
                                     </div>
@@ -97,7 +99,7 @@
                                 <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
                                     <div class="quick-link">
                                         <a href="/resources/?search=Sunday+Service&section=sermons">
-                                            <img src="{{ static('assets/img/search-3.png') }}" class="img-fluid" alt="">
+                                            <img src="{{ static('assets/img/DSC_8664.jpg') }}" class="img-fluid" alt="">
                                             <span>Sunday Services</span>
                                         </a>
                                     </div>
@@ -105,7 +107,7 @@
                                 <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
                                     <div class="quick-link">
                                         <a href="/resources/?search=Youth+Alive&section=sermons">
-                                            <img src="{{ static('assets/img/search-4.png') }}" class="img-fluid" alt="">
+                                            <img src="{{ static('assets/img/DSC_85312.jpg') }}" class="img-fluid" alt="">
                                             <span>Youth Alive</span>
                                         </a>
                                     </div>
@@ -116,6 +118,7 @@
                                 <div class="col">
                                     <div class="table-responsive">
                                         <table class="table table-borderless">
+                                            {% set media_page = media_page_obj %}
                                             {% for media in media_page_obj if media_page_obj %}
                                                 <tr>
                                                     <td>
@@ -131,17 +134,19 @@
                                                             {% else %}
                                                                 <div>Document File</div>
                                                             {% endif %}
-                                                            <div>
+                                                            <div class="buttonContainer">
                                                                 {% if media.media_format == 'Video' or media.media_format == 'Audio' %}
                                                                     <button type="button" class="btn btn-play me-2"
-                                                                        data-bs-toggle="modal" data-bs-target="#{{media.id}}">
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#{{media.media_format|lower}}PlayerModal">
                                                                         <img src="{{ static('assets/img/play.svg') }}"
-                                                                            class="img-fluid">
+                                                                            id="{{media.id}}" class="img-fluid">
                                                                     </button>
                                                                 {% endif %}
                                                                 {##}
-                                                                {% set media_length = media.resource_file.name.split('/')[media.resource_file.name.split('/')|length -1 ] %}
-                                                                <a href="{{media.resource_file.url}}" download="{{media_length}}" target="_blank" class="btn btn-download">
+                                                                {% set media_name = media.resource_file.name.split('/')[media.resource_file.name.split('/')|length-1 ] %}
+                                                                <a href="{{media.resource_file.url}}" download="{{media_name}}"
+                                                                    target="_blank" class="btn btn-download">
                                                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                                                         xmlns="http://www.w3.org/2000/svg">
                                                                         <path
@@ -158,8 +163,8 @@
                                                 <tr>
                                                     <td>
                                                         <div class="result">
-                                                            <div><img src="{{ static('assets/img/logo-red-small.png') }}"
-                                                                    class="me-2" alt="">
+                                                            <div>
+                                                                <img src="{{ static('assets/img/logo-red-small.png') }}" class="me-2" alt="">
                                                                 No Recent Media Resources Found
                                                             </div>
                                                             <div>Winners Chapel JHB CBD</div>
@@ -184,6 +189,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             {# pagination using only jinja, no js #}
                             {% if media_page_obj %}
                                 <nav aria-label="..." class="mt-4">
@@ -195,7 +201,7 @@
                                         {# init start number for the pagination range #}
                                         {% set starterCount = 1 %}
                                         {# init current page in the pagination #}
-                                        {% set currentPage = media_page_obj.number  %}
+                                        {% set currentPage = media_page_obj.number %}
                                         {# number of items to show in page per time #}
                                         {% set controller = 4 %}
                                         {# set the range of the pagination per time#}
@@ -203,19 +209,20 @@
 
                                         {# set left navigation link #}
                                         {% set previous_pagination_link = "" %}
-                                        {% if media_page_obj.number - 1  >  0 %}
-                                            {% set previous_pagination_link = previous_pagination_link + "?media_page=" + (currentPage - 1)|string %}
+                                        {% if media_page_obj.number - 1 > 0 %}
+                                            {% set previous_pagination_link = previous_pagination_link + "?media_page=" +
+                                            (currentPage - 1)|string %}
                                         {% else %}
                                             {% set previous_pagination_link = previous_pagination_link + "#" %}
                                         {% endif %}
 
                                         {# check if the current page is greater than the controller, if true,
-                                            increase the number range by the total item plus 1 since a range 
-                                            will stop at one shy in a loop and then set starter count to the
-                                            current page minus 2 so that next page will start at 2 for instance
+                                        increase the number range by the total item plus 1 since a range
+                                        will stop at one shy in a loop and then set starter count to the
+                                        current page minus 2 so that next page will start at 2 for instance
                                         #}
 
-                                        {% if currentPage > controller  %}
+                                        {% if currentPage > controller %}
                                             {% set numberRange = totalItems + 1 %}
                                             {% set starterCount = currentPage - 4 %}
                                         {% else %}
@@ -223,51 +230,51 @@
                                         {% endif %}
 
                                         {# page numbers to show #}
-                                        {% if (pagesNum - numberRange - 1)  > 0 %}
+                                        {% if (pagesNum - numberRange - 1) > 0 %}
                                             {% set numberRange = numberRange + (pagesNum - numberRange - 1) %}
-                                        {% endif  %}
-                                        {% if currentPage < pagesNum-1 and currentPage > 4 %}
+                                        {% endif %}
+                                        {% if currentPage < pagesNum-1 and currentPage> 4 %}
                                             {% if (pagesNum - currentPage) >= 1 %}
-                                                {% set starterCount = currentPage - 2 %}                                                  
-                                            {% endif  %}
-                                        {% elif currentPage+2 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 2 > 0 %}
+                                                {% set starterCount = currentPage - 2 %}
+                                            {% endif %}
+                                        {% elif currentPage+2 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 2> 0 %}
                                             {% set starterCount = currentPage - 2 %}
-                                        {% elif currentPage+1 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 1 > 0 %}
+                                        {% elif currentPage+1 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 1> 0 %}
                                             {% set starterCount = currentPage - 1 %}
                                         {% endif %}
 
-                                        <li class="page-item d-none"><a href="{{previous_pagination_link}}" class="page-link">Previous</a></li>
-                                        
+                                        <li class="page-item d-none"><a href="{{previous_pagination_link}}"
+                                                class="page-link">Previous</a></li>
+
                                         {# loop and set the numbering #}
                                         {% for k in range(starterCount, numberRange) %}
-                                            {% if k <= pagesNum  %}
-                                                {# add the activate style for current page #}
-                                                {% if currentPage==k %} 
-                                                    <li class="page-item active"><a class="page-link" href="?media_page={{k}}">{{k}}</a></li>
+
+                                            {% if k <= pagesNum %} {# add the activate style for current page #} 
+                                                {% if currentPage==k %} <li class="page-item active"><a class="page-link" href="?search={{ request.session.get('search_query','') }}&section={{ request.session.get('search_section', '') }}&media_page={{k}}">{{k}}</a></li>
                                                     {% if not loop.first %}
                                                         {% set starterCount = starterCount + 1 %}
                                                         {% set numberRange = numberRange + 1 %}
                                                     {% endif %}
-                                                {% elif loop.index <  pagesNum and k - 4 < starterCount %}
-                                                    <li class="page-item"><a class="page-link" href="?media_page={{k}}">{{k}}</a></li>
+                                                {% elif loop.index < pagesNum and k - 4 < starterCount %} 
+                                                    <li class="page-item"><a class="page-link" href="?search={{ request.session.get('search_query', '') }}&section={{ request.session.get('search_section', '') }}&media_page={{k}}">{{k}}</a></li>
                                                 {% endif %}
                                             {% endif %}
                                         {% endfor %}
 
                                         {# check if there is still more pages to show #}
                                         {% set pageLeft = (pagesNum - 1) - currentPage %}
-                                        {% if  pageLeft > 1 and pagesNum-1 > 4 %}
+                                        {% if pageLeft > 1 and pagesNum-1 > 4 %}
                                             <li class="page-item"><a class="page-link" href="#" style="display: inline-block;">...</a></li>
-                                        {% endif %} 
-                                        
-                                        {# set right navigation button #}
-                                        {% set next_pagination_link = "" %}
-                                        {% if currentPage + 1  <  pagesNum %}
-                                            {% set next_pagination_link = next_pagination_link + "?media_page=" + (currentPage + 1)|string %}
-                                        {% else %}
-                                            {% set next_pagination_link = next_pagination_link + "#" %}
                                         {% endif %}
 
+                                        {# set right navigation button #}
+                                        {% set next_pagination_link = "" %}
+                                            {% if currentPage + 1 < pagesNum %} 
+                                                {% set next_pagination_link=next_pagination_link + "?media_page=" + (currentPage + 1)|string %} 
+                                            {% else %} 
+                                                {% set next_pagination_link=next_pagination_link + "#" %} 
+                                        {% endif %}
+                                        
                                         <li class="page-item"><a class="page-link" href="{{next_pagination_link}}">Next</a></li>
                                     </ul>
                                 </nav>
@@ -281,7 +288,9 @@
                                         <div class="search-form">
                                             <input type="text" name="search" placeholder="{% if request.GET.get('search') and request.GET.get('section') == 'books' %}{{request.GET.get('search')}} {% else %} Search{% endif %}">
                                             <input type="hidden" name="section" placeholder="Search" value="books">
-                                            <button type="submit" class="btn"><img src="{{ static('assets/img/icon-search.png') }}"></button>
+                                            <button type="submit" class="btn">
+                                                <img src="{{ static('assets/img/icon-search.png') }}">
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -289,38 +298,38 @@
                             <br>
                             <div class="swiper init-swiper">
                                 <script type="application/json" class="swiper-config">
-                                        {
-                                            "loop": true,
-                                            "speed": 600,
-                                            "autoplay": {
-                                                "delay": 5000
-                                            },
-                                            "slidesPerView": "auto",
-                                            "navigation": {
-                                                "nextEl": ".swiper-button-next",
-                                                "prevEl": ".swiper-button-prev"
-                                            },
-                                            "pagination": {
-                                                "el": ".swiper-pagination",
-                                                "type": "bullets",
-                                                "clickable": true
-                                            },
-                                            "breakpoints": {
-                                                "320": {
-                                                    "slidesPerView": 1,
-                                                    "spaceBetween": 40
+                                            {
+                                                "loop": false,
+                                                "speed": 600,
+                                                "autoplay": {
+                                                    "delay": 5000
                                                 },
-                                                "576": {
-                                                    "slidesPerView": 2,
-                                                    "spaceBetween": 40
+                                                "slidesPerView": "auto",
+                                                "navigation": {
+                                                    "nextEl": ".swiper-button-next",
+                                                    "prevEl": ".swiper-button-prev"
                                                 },
-                                                "1200": {
-                                                    "slidesPerView": 4,
-                                                    "spaceBetween": 10
+                                                "pagination": {
+                                                    "el": ".swiper-pagination",
+                                                    "type": "bullets",
+                                                    "clickable": true
+                                                },
+                                                "breakpoints": {
+                                                    "320": {
+                                                        "slidesPerView": 1,
+                                                        "spaceBetween": 40
+                                                    },
+                                                    "576": {
+                                                        "slidesPerView": 2,
+                                                        "spaceBetween": 40
+                                                    },
+                                                    "1200": {
+                                                        "slidesPerView": 4,
+                                                        "spaceBetween": 10
+                                                    }
                                                 }
                                             }
-                                        }
-                                    </script>
+                                        </script>
 
                                 <div class="swiper-wrapper align-items-end" data-aos="fade-up" data-aos-delay="100">
 
@@ -336,7 +345,7 @@
                                     <div class="swiper-slide">
                                         <div class="quick-link">
                                             <a href="/resources/?search=Kingdom+Service&section=books">
-                                                <img src="{{ static('assets/img/search-2.png') }}" class="img-fluid" alt="">
+                                                <img src="{{ static('assets/img/DSC_9236.jpg') }}" class="img-fluid" alt="">
                                                 <span>Kingdom Service</span>
                                             </a>
                                         </div>
@@ -345,7 +354,8 @@
                                     <div class="swiper-slide">
                                         <div class="quick-link">
                                             <a href="/resources/?search=Holiness&section=books">
-                                                <img src="{{ static('assets/img/quick-links/5.jpg') }}" class="img-fluid" alt="">
+                                                <img src="{{ static('assets/img/quick-links/5.jpg') }}" class="img-fluid"
+                                                    alt="">
                                                 <span>Holiness</span>
                                             </a>
                                         </div>
@@ -396,7 +406,7 @@
                                     </div>
                                 {% endfor %}
                             </div>
-        
+
                             {# pagination using only jinja, no js #}
                             {% if book_is_paginated %}
                                 <nav aria-label="..." class="mt-5">
@@ -408,7 +418,7 @@
                                         {# init start number for the pagination range #}
                                         {% set starterCount = 1 %}
                                         {# init current page in the pagination #}
-                                        {% set currentPage = book_page_obj.number  %}
+                                        {% set currentPage = book_page_obj.number %}
                                         {# number of items to show in page per time #}
                                         {% set controller = 4 %}
                                         {# set the range of the pagination per time#}
@@ -416,19 +426,19 @@
 
                                         {# set left navigation link #}
                                         {% set previous_pagination_link = "" %}
-                                        {% if book_page_obj.number - 1  >  0 %}
+                                        {% if book_page_obj.number - 1 > 0 %}
                                             {% set previous_pagination_link = previous_pagination_link + "?book_page=" + (currentPage - 1)|string %}
                                         {% else %}
                                             {% set previous_pagination_link = previous_pagination_link + "#" %}
                                         {% endif %}
 
                                         {# check if the current page is greater than the controller, if true,
-                                            increase the number range by the total item plus 1 since a range 
-                                            will stop at one shy in a loop and then set starter count to the
-                                            current page minus 2 so that next page will start at 2 for instance
+                                        increase the number range by the total item plus 1 since a range
+                                        will stop at one shy in a loop and then set starter count to the
+                                        current page minus 2 so that next page will start at 2 for instance
                                         #}
 
-                                        {% if currentPage > controller  %}
+                                        {% if currentPage > controller %}
                                             {% set numberRange = totalItems + 1 %}
                                             {% set starterCount = currentPage - 4 %}
                                         {% else %}
@@ -436,51 +446,50 @@
                                         {% endif %}
 
                                         {# page numbers to show #}
-                                        {% if (pagesNum - numberRange - 1)  > 0 %}
+                                        {% if (pagesNum - numberRange - 1) > 0 %}
                                             {% set numberRange = numberRange + (pagesNum - numberRange - 1) %}
-                                        {% endif  %}
-                                        {% if currentPage < pagesNum-1 and currentPage > 4 %}
+                                        {% endif %}
+                                        {% if currentPage < pagesNum-1 and currentPage> 4 %}
                                             {% if (pagesNum - currentPage) >= 1 %}
-                                                {% set starterCount = currentPage - 2 %}                                                  
-                                            {% endif  %}
-                                        {% elif currentPage+2 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 2 > 0 %}
+                                                {% set starterCount = currentPage - 2 %}
+                                            {% endif %}
+                                        {% elif currentPage+2 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 2> 0 %}
                                             {% set starterCount = currentPage - 2 %}
-                                        {% elif currentPage+1 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 1 > 0 %}
+                                        {% elif currentPage+1 is divisibleby 5 and currentPage + 1 < pagesNum and currentPage - 1> 0 %}
                                             {% set starterCount = currentPage - 1 %}
                                         {% endif %}
 
                                         <li class="page-item d-none"><a href="{{previous_pagination_link}}" class="page-link">Previous</a></li>
-                                        
+
                                         {# loop and set the numbering #}
                                         {% for k in range(starterCount, numberRange) %}
-                                            {% if k <= pagesNum  %}
-                                                {# add the activate style for current page #}
+                                            {% if k <= pagesNum %} {# add the activate style for current page #} 
                                                 {% if currentPage==k %} 
-                                                    <li class="page-item active"><a class="page-link" href="?book_page={{k}}">{{k}}</a></li>
+                                                    <li class="page-item active"><a class="page-link" href="?search={{ request.session.get('search_query') }}&section={{ request.session.get('search_section') }}&book_page={{k}}">{{k}}</a></li>
                                                     {% if not loop.first %}
                                                         {% set starterCount = starterCount + 1 %}
                                                         {% set numberRange = numberRange + 1 %}
                                                     {% endif %}
-                                                {% elif loop.index <  pagesNum and k - 4 < starterCount %}
-                                                    <li class="page-item"><a class="page-link" href="?book_page={{k}}">{{k}}</a></li>
+                                                {% elif loop.index < pagesNum and k - 4 < starterCount %} 
+                                                    <li class="page-item"><a class="page-link" href="?search={{ request.session.get('search_query') }}&section={{ request.session.get('search_section') }}&book_page={{k}}">{{k}}</a></li>
                                                 {% endif %}
                                             {% endif %}
                                         {% endfor %}
 
                                         {# check if there is still more pages to show #}
                                         {% set pageLeft = (pagesNum - 1) - currentPage %}
-                                        {% if  pageLeft > 1 and pagesNum-1 > 4 %}
+                                        {% if pageLeft > 1 and pagesNum-1 > 4 %}
                                             <li class="page-item"><a class="page-link" href="#" style="display: inline-block;">...</a></li>
-                                        {% endif %} 
-                                        
-                                        {# set right navigation button #}
-                                        {% set next_pagination_link = "" %}
-                                        {% if currentPage + 1  <  pagesNum %}
-                                            {% set next_pagination_link = next_pagination_link + "?book_page=" + (currentPage + 1)|string %}
-                                        {% else %}
-                                            {% set next_pagination_link = next_pagination_link + "#" %}
                                         {% endif %}
 
+                                        {# set right navigation button #}
+                                        {% set next_pagination_link = "" %}
+                                        {% if currentPage + 1 < pagesNum %} 
+                                            {% set next_pagination_link=next_pagination_link + "?book_page=" + (currentPage + 1)|string %} 
+                                        {% else %} 
+                                            {% set next_pagination_link=next_pagination_link + "#" %} 
+                                        {% endif %}
+                                        
                                         <li class="page-item"><a class="page-link" href="{{next_pagination_link}}">Next</a></li>
                                     </ul>
                                 </nav>
@@ -494,19 +503,13 @@
 
 
     <!-- Modal -->
-    {% for mediamodal in media_page_obj if media_page_obj %}
-       {% if mediamodal.media_format == "Audio" %}
-            {{audiomodalmacro(mediamodal.id, mediamodal.file_title, mediamodal.service, mediamodal.message_date.strftime('%d-%m-%y'), mediamodal.resource_file.url)}} 
-        {% elif mediamodal.media_format == "Video" %}
-            {{videomodalmacro(mediamodal.id, mediamodal.file_title, mediamodal.service, mediamodal.message_date.strftime('%d-%m-%y'), mediamodal.resource_file.url)}}
-        {% endif %}
-    {% endfor %}
-
+    {% include 'partials/__media_players.html' %}
+    
     <!-- Modal -->
     {% for bookmodal in book_page_obj if book_page_obj %}
         {{bookmodalmacro(bookmodal.id, bookmodal.file_title, bookmodal.author, bookmodal.gnere, bookmodal.publisher, bookmodal.publish_year, bookmodal.isbn, bookmodal.foreward, bookmodal.featured_image.url, bookmodal.image_1.url, bookmodal.image_2.url, unpaginated_books)}}
     {% endfor %}
-    
+
 {% endblock pageContent %}
 
 
@@ -521,7 +524,5 @@
 {% block pageScripts %}
     {{super()}}
     <script src="{{ static('assets/js/players.js') }}"></script>
+    <script src="{{ static('assets/js/media-fetch.js') }}"></script>
 {% endblock pageScripts %}
-
-
-
