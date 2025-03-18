@@ -6,7 +6,6 @@ document.querySelectorAll(".buttonContainer").forEach((container) => {
             fetch(`/resources/media/content/${mediaId}/`)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data.media_content);
                     if (data.media_content && data.media_content.format == "Audio") {
                         document.getElementById("file_title").textContent = data.media_content.file_title;
                         document.getElementById("message_date").textContent = data.media_content.message_date;
@@ -18,7 +17,6 @@ document.querySelectorAll(".buttonContainer").forEach((container) => {
                             return;
                         }
                         const player = videojs(audioElement);
-                        console.log(player);
 
                         player.src({
                             src: data.media_content.media_source,
@@ -37,7 +35,6 @@ document.querySelectorAll(".buttonContainer").forEach((container) => {
                             return;
                         }
                         const player = videojs(videoElement);
-                        console.log(player);
 
                         player.src({
                             src: data.media_content.media_source,
