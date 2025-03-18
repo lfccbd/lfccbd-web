@@ -1,5 +1,6 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views import View
@@ -96,3 +97,22 @@ class ResourcesListView(View):
             'unpaginated_books': Book.objects.filter(publish=True),
         }
         return render(request, self.template_name, context)
+
+
+class MediaContent(View):
+    def get(self, request, *args, **kwargs):
+        try:
+            media_id = self.kwargs.get('id')
+            media = Media.objects.get(id=media_id)
+            media_content = {
+                'format': media.media_format,
+                'file_title': media.file_title,
+                'service': media.service,
+                'message_date': media.message_date.strftime('%d-%m-%Y'),
+                'media_source': media.resource_file.url,
+            }
+
+            return JsonResponse({'media_content': media_content})
+
+        except Media.DoesNotExist:
+            return JsonResponse({'error': 'Media not found'}, status=404)
