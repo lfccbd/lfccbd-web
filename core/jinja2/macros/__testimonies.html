@@ -7,7 +7,7 @@
                     <div class="testimony-card">
                         <h3><img src="{{ static('assets/img/logo-red-small.png') }}" class="me-3" alt="">Financial BreakThrough</h3>
                         <p class="mt-4">
-                            {{message}}
+                            {{message| replace("\n","<br/>") | safe}}
                         </p>
             
                         <div class="testimony-card-footer mt-3 d-flex align-items-end justify-content-between">
