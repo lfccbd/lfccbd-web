@@ -1,8 +1,11 @@
 document.querySelectorAll(".buttonContainer").forEach((container) => {
     container.addEventListener("click", function (event) {
-        if (event.target.matches(".btn")) {
-            let mediaId = event.target.querySelector("img").getAttribute("id");
-            // AJAX
+        const button = event.target.closest("button");
+
+        if (button) {
+            // Get the unique media ID from the button ID
+            let mediaId = button.id;
+            
             fetch(`/resources/media/content/${mediaId}/`)
                 .then((response) => response.json())
                 .then((data) => {
