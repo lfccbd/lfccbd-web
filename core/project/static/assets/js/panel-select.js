@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     // current URL
     const currentUrl = window.location.href;
-    console.log(currentUrl);
 
     //tabs
     const sermonTab = document.getElementById("tab1");
