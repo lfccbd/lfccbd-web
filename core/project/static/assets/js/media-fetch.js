@@ -3,7 +3,7 @@ document.querySelectorAll(".buttonContainer").forEach((container) => {
         const button = event.target.closest("button");
 
         if (button) {
-            // Get the unique media ID from the button ID
+            // get the unique media ID
             let mediaId = button.id;
             
             fetch(`/resources/media/content/${mediaId}/`)
