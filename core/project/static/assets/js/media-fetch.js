@@ -2,14 +2,28 @@ document.querySelectorAll(".buttonContainer").forEach((container) => {
     container.addEventListener("click", function (event) {
         const button = event.target.closest("button");
 
+        // disable the play button
+        const playButtonAudio = document.getElementById("playBtnAudio");
+        const playButtonVideo = document.getElementById("playBtn");
+
+        if (playButtonAudio) {
+            playButtonAudio.disabled = true;
+        }
+        if (playButtonVideo) {
+            playButtonVideo.disabled = true;
+        }
+
         if (button) {
             // get the unique media ID
             let mediaId = button.id;
-            
+
             fetch(`/resources/media/content/${mediaId}/`)
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.media_content && data.media_content.format == "Audio") {
+                        // enable play
+                        playButtonAudio.disabled = false;
+                        // update media
                         document.getElementById("file_title").textContent = data.media_content.file_title;
                         document.getElementById("message_date").textContent = data.media_content.message_date;
                         document.getElementById("service").textContent = data.media_content.service;
@@ -28,6 +42,9 @@ document.querySelectorAll(".buttonContainer").forEach((container) => {
                         player.load();
                         player.play();
                     } else if (data.media_content && data.media_content.format == "Video") {
+                        // enable play
+                        playButtonVideo.disabled = false;
+                        // update media
                         document.getElementById("video_file_title").textContent = data.media_content.file_title;
                         document.getElementById("video_message_date").textContent = data.media_content.message_date;
                         document.getElementById("video_service").textContent = data.media_content.service;
