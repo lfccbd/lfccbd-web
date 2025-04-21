@@ -1,27 +1,24 @@
-from datetime import datetime
+from ninja import ModelSchema
 
-from pydantic import BaseModel
-
-
-class TestimonyCreateSchema(BaseModel):
-	first_name: str
-	last_name: str
-	designation: str
-	tesitmony: str
+from core.testimonies.models import Testimony
 
 
-class TestimonySchema(BaseModel):
-	id: str  # noqa: A003, E261
-	first_name: str
-	last_name: str
-	designation: str
-	tesitmony: str
-	date_received: datetime
-
+class TestimonyCreateSchema(ModelSchema):
 	class Config:
-		from_attributes = True
+		model = Testimony
+		model_fields = ['first_name', 'last_name', 'designation', 'title', 'location', 'testimony']
 
-	@classmethod
-	def from_orm(cls, obj):
-		# override the from_orm method to handle ORM objects"
-		return cls.model_validate(obj)
+
+class TestimonySchema(ModelSchema):
+	class Config:
+		model = Testimony
+		model_fields = [
+			'id',
+			'first_name',
+			'last_name',
+			'title',
+			'designation',
+			'testimony',
+			'date_received',
+		]
+		from_attributes = True

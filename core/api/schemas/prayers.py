@@ -1,17 +1,16 @@
-from datetime import datetime
+from ninja import ModelSchema
 
-from pydantic import BaseModel
-
-
-class PrayerCreateSchema(BaseModel):
-    first_name: str
-    last_name: str
-    prayer: str
-    date_received: datetime
+from core.prayers.models import PrayerRequest
 
 
-class PrayerSchema(BaseModel):
-    date_received: datetime
+class PrayerCreateSchema(ModelSchema):
+	class Config:
+		model = PrayerRequest
+		model_fields = ['first_name', 'last_name', 'prayer', 'date_received']
 
-    class Config:
-        from_attributes = True
+
+class PrayerSchema(ModelSchema):
+	class Config:
+		model = PrayerRequest
+		model_fields = ['date_received']
+		from_attributes = True

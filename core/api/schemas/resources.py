@@ -1,68 +1,62 @@
-from datetime import datetime
+from ninja import ModelSchema
 
-from pydantic import BaseModel
-
-
-# Response schema (output)
-class SliderSchema(BaseModel):
-    image_1_text: str
-    image_1: str
-    image_2_text: str
-    image_2: str
-    image_3_text: str
-    image_3: str
-    image_4_text: str
-    image_4: str
-
-    class Config:
-        from_attributes = True
-
-
-class MediaSchema(BaseModel):
-    id: str  # noqa: A003, E261
-    slug: str
-    file_title: str
-    category: str
-    service: str
-    message_date: str
-    reource_file: str
-    view_count: str
-    publish: bool
-    date_created: datetime
-    last_updated: datetime
-
-    class Config:
-        from_attributes = True
-
-    @classmethod
-    def from_orm(cls, obj):
-        # override the from_orm method to handle ORM objects"
-        return cls.model_validate(obj)
+from core.resources.models import Book, ImageSlider, Media
 
 
 # Response schema (output)
-class BookSchema(BaseModel):
-    id: str  # noqa: A003, E261
-    slug: str
-    file_title: str
-    category: str
-    author: str
-    publish_year: int
-    publisher: str
-    foreward: str
-    isbn: str
-    featured_image: str
-    image_1: str
-    image_2: str
-    view_count: int
-    publish: bool
-    date_created: datetime
-    last_updated: datetime
+class SliderSchema(ModelSchema):
+	class Config:
+		model = ImageSlider
+		model_fields = [
+			'image_1_text',
+			'image_1',
+			'image_2_text',
+			'image_2',
+			'image_3_text',
+			'image_3',
+			'image_4_text',
+			'image_4',
+		]
+		from_attributes = True
 
-    class Config:
-        from_attributes = True
 
-    @classmethod
-    def from_orm(cls, obj):
-        # override the from_orm method to handle ORM objects"
-        return cls.model_validate(obj)
+class MediaSchema(ModelSchema):
+	class Config:
+		model = Media
+		model_fields = [
+			'id',
+			'slug',
+			'file_title',
+			'category',
+			'service',
+			'message_date',
+			'resource_file',
+			'publish',
+			'date_created',
+			'last_updated',
+		]
+		from_attributes = True
+
+
+# Response schema (output)
+class BookSchema(ModelSchema):
+	class Config:
+		model = Book
+		model_fields = [
+			'id',
+			'slug',
+			'file_title',
+			'category',
+			'author',
+			'publish_year',
+			'publisher',
+			'foreward',
+			'isbn',
+			'featured_image',
+			'image_1',
+			'image_2',
+			'publish',
+			'date_created',
+			'last_updated',
+		]
+		from_attributes = True

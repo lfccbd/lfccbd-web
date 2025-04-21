@@ -1,16 +1,16 @@
-from datetime import datetime
+from ninja import ModelSchema
 
-from pydantic import BaseModel
-
-
-class ContactCreateSchema(BaseModel):
-    full_name: str
-    phone: str
-    message: str
+from core.contacts.models import Contact
 
 
-class ContactSchema(BaseModel):
-    date_received: datetime
+class ContactCreateSchema(ModelSchema):
+	class Config:
+		model = Contact
+		model_fields = ['full_name', 'phone', 'message']
 
-    class Config:
-        from_attributes = True
+
+class ContactSchema(ModelSchema):
+	class Config:
+		model = Contact
+		model_fields = ['date_received']
+		from_attributes = True
