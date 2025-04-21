@@ -12,7 +12,7 @@ def search_books(search=None):
 		books = books.filter(
 			(Q(file_title__icontains=search) & Q(author__icontains=search))
 			| Q(file_title__icontains=search)
-			| Q(author__icontain=search)
+			| Q(author__icontains=search)
 		)
 
 	return books
@@ -23,9 +23,9 @@ def search_sermons(search=None):
 
 	if search:
 		sermons = sermons.filter(
-			(Q(file_title__icontains=search) & Q(service_icontains=search))
+			(Q(file_title__icontains=search) & Q(service__icontains=search))
 			| Q(file_title__icontains=search)
-			| Q(service__icontain=search)
+			| Q(service__icontains=search)
 		)
 
 	return sermons
@@ -36,9 +36,9 @@ def search_epistles(search=None):
 
 	if search:
 		epistles = epistles.filter(
-			(Q(epistle_message_theme__icontains=search) & Q(epistle_message_topic_icontains=search))
+			(Q(epistle_message_theme__icontains=search) & Q(epistle_message_topic__icontains=search))
 			| Q(epistle_message_theme__icontains=search)
-			| Q(epistle_message_topic_icontains=search)
+			| Q(epistle_message_topic__icontains=search)
 		)
 
 	return epistles
