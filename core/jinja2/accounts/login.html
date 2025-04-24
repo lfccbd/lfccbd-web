@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+
+{# override meta block #}
+{% block pageMeta %}
+    <title>Followup Checkup - Winners Chapel International JHB CBD</title>
+    <meta name="description"
+        content="The Followup Department is an essential ministry within the church, dedicated to supporting and nurturing new believers, guests, and members who have made decisions to join the church or deepen their faith.">
+    <meta name="keywords"
+        content="liviing faith church, liviing faith church cbd, liviing faith church johannesburg, liviing faith church south africa, lfc johannesburg, lfc cbd, winners chapel cbd jhb, bishop david oyedepo, prayers, prayer requests, faith tarbanacle">
+{% endblock pageMeta %}
+
+
+{# fonts block override #}
+{% block fonts %}
+    {{super()}}
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+{% endblock fonts %}
+
+
+{# pageContent block override #}
+{% block pageContent %}
+    <!-- About Section -->
+    <section id="contact" class="contact registrations section">
+
+        <div class="container">
+
+            <div class="row contact-us">
+                <div class="col text-center px-lg-5">
+                    <h1>Account <span class="text-red">Login</span></h1>
+                    <p class="mx-lg-5 px-lg-5">
+                        The Followup Department is an essential ministry within the church, 
+                        dedicated to supporting and nurturing new believers, guests, and members 
+                        who have made decisions to join the church or deepen their faith.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+
+                    <div class="tab-content" id="myTabContent">
+
+
+                        <div class="tab-pane fade show active" id="tab2-pane" role="tabpanel" aria-labelledby="tab2"
+                            tabindex="0">
+                            <div class="row mx-lg-5 mt-5">
+                                <div class="col-lg-4">
+                                    <div class="left-col d-flex flex-column justify-content-between h-100">
+                                        <ul>
+                                            <li class="active">
+                                                <a href="">
+                                                    <img src="{{ static('assets/img/logo-red-small.svg') }}"
+                                                        class="img-fluid me-3" alt="">ACCOUNT LOGIN
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                        <div class="text-center mt-5 pt-1">
+                                            <img src="{{ static('assets/img/logo-gray-large.png') }}" class="img-fluid mt-4"
+                                                alt="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-8 mt-4 mt-lg-0">
+
+                                    <div id="form4" class="right-col p-4">
+                                        <h2 class="mt-1">FOLLOWUP <span class="text-red">ACCOUNT </span>LOGIN</h2>
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge">LOGIN REQUIRED</span>
+                                            <span>TO ACCESS FOLLOW-UP FORMS</span>
+                                        </div>
+                                        {% for msg in messages if messages %} 
+                                            <br><br>
+                                            {% if msg.level_tag == 'success' %} 
+                                                <span style="color: green; font-weight: bold;">{{msg.message}} </span>
+                                            {% elif msg.level_tag == 'error' %}
+                                                <span class="text-red" style="font-weight: bold;">{{msg.message}}</span>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        <form class="row gx-3 gy-4 mt-3" method="post">
+                                            {{csrf_input}}
+                                            <div class="col-md-12">
+                                                <label for="id_first_name" class="form-label">Email</label>
+                                                {{form.email}}
+                                                {% if form.email.errors %}<span class="text-red">{{form.email.errors|striptags}}</span>{% endif %}
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="id_last_name" class="form-label">Password</label>
+                                                {{form.password}}
+                                                {% if form.password.errors %}<span class="text-red">{{form.password.errors|striptags}}</span>{% endif %}
+                                            </div>
+                                            {{ form.captcha }}
+                                            <div class="col-12 d-grid">
+                                                <button type="submit" class="btn btn-primary">Login</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock pageContent %}
