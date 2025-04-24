@@ -7,14 +7,14 @@
     <div class="col-12">
         {{outreach_form.phone_number.label|safe}}
         {{outreach_form.phone_number}}
-        {% if form.phone_number is defined and form.phone_number.errors and form_section == 'outreach_form' %}
+        {% if form.phone_number is defined and form.phone_number.errors and form_section == 'form_section_outreach' %}
             <span style="color: #DA0000;">{{form.phone_number.errors|striptags}}</span>
         {% endif %}
     </div>
     <div class="col-md-12">
         {{outreach_form.full_name.label|safe}}
         {{outreach_form.full_name}}
-        {% if form.full_name is defined and form.full_name.errors and form_section == 'outreach_form' %}
+        {% if form.full_name is defined and form.full_name.errors and form_section == 'form_section_outreach' %}
             <span style="color: #DA0000;">{{form.full_name.errors|striptags}}</span>
         {% endif %}
     </div>
@@ -22,7 +22,7 @@
     <div class="col-md-12">
         {{outreach_form.verification_code.label|safe}}
         {{outreach_form.verification_code}}
-        {% if form.verification_code is defined and form.verification_code.errors and form_section == 'outreach_form' %}
+        {% if form.verification_code is defined and form.verification_code.errors and form_section == 'form_section_outreach' %}
             <span style="color: #DA0000;">{{form.verification_code.errors|striptags}}</span>
         {% endif %}
     </div>
