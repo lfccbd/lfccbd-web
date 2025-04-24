@@ -38,7 +38,7 @@ class Testimony(models.Model):
         max_length=254, choices=designation_choices, default='Mrs'
     )
     title = pgcrypto.EncryptedCharField(max_length=200)
-    testimony = pgcrypto.EncryptedTextField(max_length=1000)
+    testimony = pgcrypto.EncryptedTextField(max_length=2000)
     location = pgcrypto.EncryptedCharField(
         max_length=200, verbose_name='Church Branch/Location'
     )
