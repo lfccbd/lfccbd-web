@@ -76,12 +76,12 @@ class FollowUpCheckupForm(forms.ModelForm):
         widget=forms.Textarea(attrs={'class': 'form-control', 'row': 6}),
     )
     church_next_sunday = forms.CharField(
-        label='Will Be In Church Next Sunday',
+        label='Will Be In Church Next Sunday *',
         required=True,
         widget=forms.Select(choices=in_church_ask, attrs={'class': 'form-select'}),
     )
     current_status = forms.CharField(
-        label='Current Member Status',
+        label='Current Member Status *',
         required=True,
         widget=forms.Select(
             choices=current_memeber_status, attrs={'class': 'form-select'}
@@ -221,7 +221,7 @@ class FollowUpOutreachForm(forms.ModelForm):
 
         # if number is valid
         if not OutreachVerficationCode.objects.filter(
-            code__exact=verification_code
+            code__exact=verification_code, usability=True
         ).exists():
             raise forms.ValidationError(
                 'Invalid verification code. Enter valid code.',
