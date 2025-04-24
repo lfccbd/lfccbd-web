@@ -2,16 +2,14 @@
     :align: center
 
 
-=============
-Winners CBD
-=============
+==========================
+Winners Int. JHB CBD
+==========================
 
 Winners Chapel JHB CBD is part of the Living Faith Church Worldwide, a mandate By God 
 Through his Servant Bishop David Oyedepo for the Liberation of mankind. As a Commission, 
 we have experienced amazing testimonies ever since this commission was handed down - 
 that is over thirty years now, To God be the glory.
-
-
 
 
 ==========
@@ -125,6 +123,18 @@ Set config for *Sentry*, *DigitalOcean Spaces*, project maintenance, *NH3*, *CSP
     IMPORT_EXPORT_EXPORT_PERMISSION_CODE = '...'
 
 
+Twilio Setup
+----------------
+
+Set *Twilio* environment variables for *Account SID, Auth Token and Phone Number*. Keys and number
+can be gotten from *https://www.twilio.com*. 
+
+.. code-block:: bash
+    
+    TWILIO_ACCOUNT_SID = '...'
+    TWILIO_AUTH_TOKEN = '...'
+    TWILIO_PHONE_NUMBER = '...'
+
 
 
 Recaptcha Setup
@@ -142,6 +152,17 @@ Ensure you use :emphasis:`reCAPTCHA v3`.
     PRODUCTION_RECAPTCHA_PRIVATE_KEY = '...'
     RECAPTCHA_REQUIRED_SCORE = '...'
 
+
+Huey Setup
+------------
+Setup huey distributed task processing using greenlet worker type. For greenlet to work, 
+you need to setup a monkey patch that serves as a custom bootstrap script in :emphasis:`manage.py`.
+
+.. code-block:: bash
+
+    if 'run_huey' in sys.argv:
+        from gevent import monkey
+        monkey.patch_all()
 
 
 Running Project
@@ -163,6 +184,14 @@ create Superuser
     make superuser
 
 
+Running Test 
+^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+    make test
+
+
 Run Server
 ^^^^^^^^^^^
 .. code-block:: bash
@@ -170,10 +199,11 @@ Run Server
     make runserver
 
 
-
-Running Test 
-^^^^^^^^^^^^^^
+Start Background Task
+^^^^^^^^^^^^^^^^^^^^^^
+There is need for a background task using huey to send sms to users.
 
 .. code-block:: bash
 
-    make test
+    make huey
+
