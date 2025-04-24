@@ -1,0 +1,196 @@
+{% extends 'base.html' %} 
+
+{# override meta block #} 
+{% block pageMeta %}
+    <title>Followup Checkup Forms - Winners Chapel International JHB CBD</title>
+    <meta name="description"
+        content="The Follow-Up Checkup Form helps Faith Tabernacle track members' welfare, addressing their concerns, and encourage active participation in church activities. It allows designated leaders to provide personalized support based on members' needs." />
+    <meta name="keywords"
+        content="liviing faith church, liviing faith church cbd, liviing faith church johannesburg, liviing faith church south africa, lfc johannesburg, lfc cbd, winners chapel cbd jhb, bishop david oyedepo, prayers, prayer requests, faith tarbanacle" />
+{% endblock pageMeta %} 
+
+
+{# fonts block override #} 
+{% block fonts %} 
+    {{super()}}
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet" />
+{% endblock fonts %} 
+
+
+{# pageContent block override #} 
+{% block pageContent %}
+
+    <!-- About Section -->
+    <section id="contact" class="contact registrations section">
+        <div class="container">
+            <div class="row contact-us">
+                <div class="col text-center px-lg-5">
+                    <h1>FOLLOW-UP <span class="text-red">FORMS</span></h1>
+                    <p class="mx-lg-5 px-lg-5">
+                        The Follow-Up Checkup Form helps Winners Chapel Intl CBD track members' welfare, addressing their
+                        concerns, and encourage active participation in church activities. It allows designated leaders to
+                        provide personalized support based on members' needs.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <ul class="nav nav-tabs justify-content-center border-0 mt-4" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="tab1" data-bs-toggle="tab" data-bs-target="#tab1-pane"
+                                type="button" role="tab" aria-controls="tab1-pabe" aria-selected="true">
+                                New Convert / Members
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tab2" data-bs-toggle="tab" data-bs-target="#tab2-pane"
+                                type="button" role="tab" aria-controls="tab2-pane" aria-selected="false">
+                                Members Checkup
+                            </button>
+                        </li>
+                    </ul>
+                
+                   <div style="text-align: center;">
+                        <br><br>
+                        {# message #}
+                        {% for msg in messages if messages %} 
+                            {% if msg.level_tag == 'success' %} 
+                                <span style="color: green; font-weight: bold; font-size: 18px;">{{msg.message}} </span>
+                            {% elif msg.level_tag == 'error' %}
+                                <span class="text-red" style="font-weight: bold; font-size: 18px;">{{msg.message}}</span>
+                            {% endif %}
+                        {% endfor %}
+                   </div>
+
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="tab1-pane" role="tabpanel" aria-labelledby="tab1"
+                            tabindex="0">
+                            <div class="row mx-lg-5 mt-5">
+                                <div class="col-lg-4">
+                                    <div class="left-col d-flex flex-column justify-content-between h-100">
+                                        <ul>
+                                            <li class="active">
+                                                <a href="">
+                                                    <img src="{{ static('assets/img/logo-red-small.svg') }}" class="img-fluid me-3"
+                                                        alt="" />FIRST TIMERS
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="{{ static('assets/img/logo-red-small.svg') }}" class="img-fluid me-3"
+                                                        alt="" />NEW CONVERT
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="text-center mt-5 pt-1">
+                                            <img src="{{ static('assets/img/logo-gray-large.png') }}" class="img-fluid mt-4" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 mt-4 mt-lg-0">
+                                    <div id="form1" class="right-col p-4">
+                                        {% include 'partials/form/__followup_sunday_first_timers.html' %}
+                                    </div>
+
+                                    <div id="form2" class="right-col p-4 d-none">
+                                        {% include 'partials/form/__followup_sunday_new_converts.html' %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="tab2-pane" role="tabpanel" aria-labelledby="tab2" tabindex="0">
+                            <div class="row mx-lg-5 mt-5">
+                                <div class="col-lg-4">
+                                    <div class="left-col d-flex flex-column justify-content-between h-100">
+                                        <ul>
+                                            <li class="active">
+                                                <a href="">
+                                                    <img src="{{ static('assets/img/logo-red-small.svg') }}" class="img-fluid me-3"
+                                                        alt="" />FOLLOW-UP CHECKUP
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="{{ static('assets/img/logo-red-small.svg') }}" class="img-fluid me-3"
+                                                        alt="" /> OUTREACH FOLLOW-UP
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="text-center mt-5 pt-1">
+                                            <img src="{{ static('assets/img/logo-gray-large.png') }}" class="img-fluid mt-4" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-8 mt-4 mt-lg-0">
+                                    <div id="form3" class="right-col p-4">
+                                        {% include 'partials/form/__followup_checkup.html' %}
+                                    </div>
+
+                                    <div id="form4" class="right-col p-4 d-none">
+                                        {% include 'partials/form/__outreach.html' %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock pageContent %}
+
+{% block pageScripts %} 
+    {{super()}}
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Function to handle form navigation within a tab
+            function switchForm(listSelector, formSelector) {
+                const lists = document.querySelectorAll(listSelector);
+                const forms = document.querySelectorAll(formSelector);
+                const submitButtons = document.querySelectorAll(`${formSelector} form button[type='submit']`);
+
+                // Function to show a specific form and update active list item
+                function showForm(index) {
+                    // Hide all forms
+                    forms.forEach((form) => form.classList.add("d-none"));
+                    // Show the selected form
+                    forms[index].classList.remove("d-none");
+
+                    // Remove 'active' class from all list items
+                    lists.forEach((item) => item.classList.remove("active"));
+                    // Add 'active' class to the corresponding list item
+                    lists[index].classList.add("active");
+                }
+
+                // Add click event listeners to each list item
+                lists.forEach((list, index) => {
+                    list.addEventListener("click", (event) => {
+                        event.preventDefault();
+                        showForm(index);
+                    });
+                });
+           
+            }
+
+            // Form switching for Tab 1
+            switchForm("#tab1-pane .left-col ul li", "#tab1-pane .right-col");
+
+            // Form switching for Tab 2
+            switchForm("#tab2-pane .left-col ul li", "#tab2-pane .right-col");
+        });
+    </script>
+    <script>
+        const submitButton = document.querySelector('button[type="submit"]');
+
+
+        submitButton.addEventListener('click', function(e) {
+            e.preventDefault()
+            submitButton.parentElement.parentElement.submit()
+          });
+
+    </script>
+{% endblock pageScripts %}
