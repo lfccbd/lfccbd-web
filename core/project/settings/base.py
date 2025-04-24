@@ -32,11 +32,14 @@ INSTALLED_APPS = [
 	'core.contacts.apps.ContactsConfig',
 	'core.api.apps.ApiConfig',
 	'core.user.apps.UserConfig',
+	'core.accounts.apps.AccountsConfig',
+	'core.followup.apps.FollowupConfig',
 	# third party apps by position
 	'django_prose_editor',
 	'simple_history',
 	'import_export',
 	'defender',
+	'huey.contrib.djhuey',
 	# OTP
 	'django_otp',
 	'django_otp.plugins.otp_totp',
