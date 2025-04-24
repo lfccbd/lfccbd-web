@@ -21,6 +21,7 @@ class OutreachVerficationCode(models.Model):
         null=True,
         blank=True,
         help_text='verification code will auto generate',
+        editable=False,
     )
     history = HistoricalRecords()
     date_created = models.DateTimeField(auto_now_add=True)

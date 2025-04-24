@@ -204,7 +204,7 @@ class SMSTemplateAdmin(admin.ModelAdmin):
 class OutreachVerficationCodeAdmin(admin.ModelAdmin):
     list_display = ['id', 'code']
     list_display_links = ['id', 'code']
-    readonly_fields = ['id']
+    readonly_fields = ['id', 'code']
     list_per_page = 50
     actions_on_top = True
     actions_on_bottom = True
