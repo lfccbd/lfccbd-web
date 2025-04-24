@@ -16,7 +16,7 @@ def members_birthday_task():
     current_month = timezone.now().month
 
     # get sms template
-    sms_template = SMSTemplates.objects.only('sms_message').get(template='Birthday')
+    sms_template = SMSTemplates.objects.only('sms_message').get(template="Member's Birthday")
     # member's birthday
     members = MemberFollowUp.objects.only(
         'phone_number', 'title', 'first_name', 'birthday'
