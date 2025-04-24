@@ -1,0 +1,33 @@
+<h2 class="mt-1">SUBMIT <span class="text-red">FOLLOW-UP</span> REQUEST</h2>
+
+<form id="outreach_form" class="row gx-3 gy-4 mt-3" action="" method="post">
+    {{csrf_input}}
+    <input type="text" name="form_section" placeholder="form block" value="outreach" style="display: none;">
+
+    <div class="col-12">
+        {{outreach_form.phone_number.label|safe}}
+        {{outreach_form.phone_number}}
+        {% if form.phone_number is defined and form.phone_number.errors and form_section == 'outreach_form' %}
+            <span style="color: #DA0000;">{{form.phone_number.errors|striptags}}</span>
+        {% endif %}
+    </div>
+    <div class="col-md-12">
+        {{outreach_form.full_name.label|safe}}
+        {{outreach_form.full_name}}
+        {% if form.full_name is defined and form.full_name.errors and form_section == 'outreach_form' %}
+            <span style="color: #DA0000;">{{form.full_name.errors|striptags}}</span>
+        {% endif %}
+    </div>
+    
+    <div class="col-md-12">
+        {{outreach_form.verification_code.label|safe}}
+        {{outreach_form.verification_code}}
+        {% if form.verification_code is defined and form.verification_code.errors and form_section == 'outreach_form' %}
+            <span style="color: #DA0000;">{{form.verification_code.errors|striptags}}</span>
+        {% endif %}
+    </div>
+    {{ outreach_form.captcha }}
+    <div class="col-12 d-grid">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
