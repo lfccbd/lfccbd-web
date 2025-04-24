@@ -40,4 +40,4 @@ class OutreachVerficationCode(models.Model):
     def save(self, *args, **kwargs):
         if self.code == 0:
             self.code = secrets.randbelow(10**8)
-        return super().save(self, *args, **kwargs)
+        return super().save(*args, **kwargs)
