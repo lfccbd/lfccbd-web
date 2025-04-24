@@ -74,13 +74,13 @@ class CheckupView(View):
                     instance.user = request.user
 
                 if active_form_class == FollowUpCheckupForm:
-                    # get member profile, 
-                    # no need for checks as it is already 
+                    # get member profile,
+                    # no need for checks as it is already
                     # vetted in form clean
                     member_profile = MemberFollowUp.objects.filter(
                         phone_number=phone_number
                     ).first()
-                    
+
                     # update instance
                     instance.member_profile = member_profile
 
@@ -96,7 +96,6 @@ class CheckupView(View):
             return HttpResponsePermanentRedirect(reverse_lazy(self.success_url))
 
         # message
-        print(form.errors)
         messages.error(request, 'Invalid Form Field(s). All fields are required.')
 
         # render page with form errors

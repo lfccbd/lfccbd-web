@@ -1,8 +1,10 @@
 import secrets
+
 from django.db import models
 from django.utils import timezone
-from simple_history.models import HistoricalRecords
 import pgcrypto
+from simple_history.models import HistoricalRecords
+
 from core.testimonies.models import generate_custom_id
 
 
