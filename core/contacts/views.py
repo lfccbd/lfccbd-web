@@ -21,7 +21,7 @@ class ContactPage(CreateView):
 		form = UserContactForm(request.POST)
 
 		if form.is_valid():
-			# submit form based on either contact or consultation
+			# submit form
 			super(ContactPage, self).form_valid(form)
 
 			# message
@@ -29,10 +29,11 @@ class ContactPage(CreateView):
 
 			return HttpResponsePermanentRedirect(reverse_lazy(self.success_url))
 
-		#  Set object to None, since class-based view expects model record object
+		#  set object to None, since class-based view expects model record object
 		self.object = None
 
 		# message
 		messages.error(request, 'Invalid Form Field(s). All fields are required.')
-		# Return class-based view form_invalid to generate form with errors
+		# return class-based view form_invalid
+		# to generate form with errors
 		return self.form_invalid(form)
