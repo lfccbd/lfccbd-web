@@ -43,6 +43,11 @@ test:
 	poetry run python -m core.manage test
 
 
+.PHONY:huey
+huey:
+	poetry run python -m core.manage run_huey
+
+
 .PHONY:setup
 setup: install migrations migrate ;
 
