@@ -7,44 +7,44 @@
     <div class="col-12">
         {{checkup_form.phone_number.label|safe}}
         {{checkup_form.phone_number}}
-        {% if form.phone_number is defined and form.phone_number.errors and form_section == 'form_section_checkup' %}
-            <span style="color: #DA0000;">{{form.phone_number.errors|striptags}}</span>
+        {% if checkup_form.phone_number is defined and checkup_form.phone_number.errors and form_section == 'checkup' %}
+            <span style="color: #DA0000;">{{checkup_form.phone_number.errors|striptags}}</span>
         {% endif %}
     </div>
     <div class="col-md-12">
         {{checkup_form.number_was_called.label|safe}}
         {{checkup_form.number_was_called}}
-        {% if form.number_was_called is defined and form.number_was_called.errors and form_section == 'form_section_checkup' %}
-            <span style="color: #DA0000;">{{form.number_was_called.errors|striptags}}</span>
+        {% if checkup_form.number_was_called is defined and checkup_form.number_was_called.errors and form_section == 'checkup' %}
+            <span style="color: #DA0000;">{{checkup_form.number_was_called.errors|striptags}}</span>
         {% endif %}
     </div>
     <div class="col-md-6">
         {{checkup_form.in_church_last_sunday.label|safe}}
         {{checkup_form.in_church_last_sunday}}
-        {% if form.in_church_last_sunday is defined and form.in_church_last_sunday.errors and form_section == 'form_section_checkup' %}
-            <span style="color: #DA0000;">{{form.in_church_last_sunday.errors|striptags}}</span>
+        {% if checkup_form.in_church_last_sunday is defined and checkup_form.in_church_last_sunday.errors and form_section == 'checkup' %}
+            <span style="color: #DA0000;">{{checkup_form.in_church_last_sunday.errors|striptags}}</span>
         {% endif %}
     </div>
     <div class="col-md-6">
         {{checkup_form.in_church_last_wenesday.label|safe}}
         {{checkup_form.in_church_last_wenesday}}
-        {% if form.in_church_last_wenesday is defined and form.in_church_last_wenesday.errors and form_section == 'form_section_checkup' %}
-            <span style="color: #DA0000;">{{form.in_church_last_wenesday.errors|striptags}}</span>
+        {% if checkup_form.in_church_last_wenesday is defined and checkup_form.in_church_last_wenesday.errors and form_section == 'checkup' %}
+            <span style="color: #DA0000;">{{checkup_form.in_church_last_wenesday.errors|striptags}}</span>
         {% endif %}
     </div>
     <div class="col-md-6">
         {{checkup_form.church_next_sunday.label|safe}}
         {{checkup_form.church_next_sunday}}
-        {% if form.church_next_sunday is defined and form.church_next_sunday.errors and form_section == 'form_section_checkup' %}
-            <span style="color: #DA0000;">{{form.church_next_sunday.errors|striptags}}</span>
+        {% if checkup_form.church_next_sunday is defined and checkup_form.church_next_sunday.errors and form_section == 'checkup' %}
+            <span style="color: #DA0000;">{{checkup_form.church_next_sunday.errors|striptags}}</span>
         {% endif %}
     </div>
     
     <div class="col-md-6">
         {{checkup_form.current_status.label|safe}}
         {{checkup_form.current_status}}
-        {% if form.current_status is defined and form.current_status.errors and form_section == 'form_section_checkup' %}
-            <span style="color: #DA0000;">{{form.current_status.errors|striptags}}</span>
+        {% if checkup_form.current_status is defined and checkup_form.current_status.errors and form_section == 'checkup' %}
+            <span style="color: #DA0000;">{{checkup_form.current_status.errors|striptags}}</span>
         {% endif %}
     </div>
     
@@ -53,8 +53,8 @@
     <div class="col-md-12">
         {{checkup_form.prayer.label|safe}}
         {{checkup_form.prayer}}
-        {% if form.prayer is defined and form.prayer.errors and form_section == 'form_section_checkup' %}
-            <span style="color: #DA0000;">{{form.prayer.errors|striptags}}</span>
+        {% if checkup_form.prayer is defined and checkup_form.prayer.errors and form_section == 'checkup' %}
+            <span style="color: #DA0000;">{{checkup_form.prayer.errors|striptags}}</span>
         {% endif %}
     </div>
     <div class="col-12 d-grid">
