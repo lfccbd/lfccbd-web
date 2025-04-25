@@ -26,32 +26,18 @@
         <div class="container">
             <div class="row contact-us">
                 <div class="col text-center px-lg-5">
-                    <h1>FOLLOW-UP <span class="text-red">FORMS</span></h1>
+                    <h1>Outreach <span class="text-red">FORM</span></h1>
                     <p class="mx-lg-5 px-lg-5">
-                        The Follow-Up Checkup Form helps Winners Chapel Intl CBD track members' welfare, addressing their
-                        concerns, and encourage active participation in church activities. It allows designated leaders to
-                        provide personalized support based on members' needs.
+                        At Winners Chapel Intl CBD, our outreach doesn't stop at the first visit. 
+                        The Follow-Up Checkup Form helps us stay connected with everyone we reach, 
+                        ensuring their welfare is cared for, their questions are answered, and 
+                        they feel welcomed into the Winners family.
                     </p>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col">
-                    <ul class="nav nav-tabs justify-content-center border-0 mt-4" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="tab1" data-bs-toggle="tab" data-bs-target="#tab1-pane"
-                                type="button" role="tab" aria-controls="tab1-pabe" aria-selected="true">
-                                New Convert / Members
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="tab2" data-bs-toggle="tab" data-bs-target="#tab2-pane"
-                                type="button" role="tab" aria-controls="tab2-pane" aria-selected="false">
-                                Members Checkup
-                            </button>
-                        </li>
-                    </ul>
-                
+   
                    <div style="text-align: center;">
                         <br><br>
                         {# message #}
@@ -74,13 +60,7 @@
                                             <li class="active">
                                                 <a href="">
                                                     <img src="{{ static('assets/img/logo-red-small.svg') }}" class="img-fluid me-3"
-                                                        alt="" />FIRST TIMERS
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="">
-                                                    <img src="{{ static('assets/img/logo-red-small.svg') }}" class="img-fluid me-3"
-                                                        alt="" />NEW CONVERT
+                                                        alt="" />Members Outreach
                                                 </a>
                                             </li>
                                         </ul>
@@ -91,51 +71,13 @@
                                 </div>
                                 <div class="col-lg-8 mt-4 mt-lg-0">
                                     <div id="form1" class="right-col p-4">
-                                        {% include 'partials/form/__followup_sunday_first_timers.html' %}
+                                        {% include 'partials/form/__member_outreach.html' %}
                                     </div>
 
-                                    <div id="form2" class="right-col p-4 d-none">
-                                        {% include 'partials/form/__followup_sunday_new_converts.html' %}
-                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab2-pane" role="tabpanel" aria-labelledby="tab2" tabindex="0">
-                            <div class="row mx-lg-5 mt-5">
-                                <div class="col-lg-4">
-                                    <div class="left-col d-flex flex-column justify-content-between h-100">
-                                        <ul>
-                                            <li class="active">
-                                                <a href="">
-                                                    <img src="{{ static('assets/img/logo-red-small.svg') }}" class="img-fluid me-3"
-                                                        alt="" />FOLLOW-UP CHECKUP
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="">
-                                                    <img src="{{ static('assets/img/logo-red-small.svg') }}" class="img-fluid me-3"
-                                                        alt="" /> OUTREACH FOLLOW-UP
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <div class="text-center mt-5 pt-1">
-                                            <img src="{{ static('assets/img/logo-gray-large.png') }}" class="img-fluid mt-4" alt="" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-8 mt-4 mt-lg-0">
-                                    <div id="form3" class="right-col p-4">
-                                        {% include 'partials/form/__followup_checkup.html' %}
-                                    </div>
-
-                                    <div id="form4" class="right-col p-4 d-none">
-                                        {% include 'partials/form/__followup_outreach.html' %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
