@@ -168,7 +168,7 @@ class FollowUpCheckupForm(forms.ModelForm):
         return selected_current_status
 
 
-class FollowUpOutreachForm(forms.ModelForm):
+class OutreachForm(forms.ModelForm):
     phone_number = Nh3CleanCharField(
         label='Phone Number *',
         required=True,
@@ -193,7 +193,6 @@ class FollowUpOutreachForm(forms.ModelForm):
             }
         ),
     )
-    captcha = ReCaptchaField(widget=ReCaptchaV3())
 
     class Meta:
         model = FollowUpOutreach
@@ -229,6 +228,52 @@ class FollowUpOutreachForm(forms.ModelForm):
             )
 
         return verification_code
+
+    def clean_full_name(self):
+        full_name = self.cleaned_data.get('full_name')
+
+        if full_name == '' or len(full_name) <= 2:
+            raise forms.ValidationError('Enter a valid name', code='full_name')
+        return full_name
+
+
+class FollowUpOutreachForm(forms.ModelForm):
+    phone_number = Nh3CleanCharField(
+        label='Phone Number *',
+        required=True,
+        widget=forms.TextInput(
+            attrs={'placeholder': 'eg +27...', 'class': 'form-control'}
+        ),
+    )
+    full_name = Nh3CleanCharField(
+        label='Full Name *',
+        required=True,
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Enter Invite Full Name', 'class': 'form-control'}
+        ),
+    )
+    captcha = ReCaptchaField(widget=ReCaptchaV3())
+
+    class Meta:
+        model = FollowUpOutreach
+        fields = ['phone_number', 'full_name']
+
+    def clean_phone_number(self):
+        phone_number = self.cleaned_data.get('phone_number')
+        phone_number_check = client.lookups.v2.phone_numbers(phone_number).fetch()
+
+        # if number is valid
+        if not phone_number.startswith('+27'):
+            raise forms.ValidationError(
+                'Invalid phone number. Start with country code eg +27',
+                code='phone_number',
+            )
+        elif not phone_number_check.valid:
+            raise forms.ValidationError(
+                'Invalid phone number. Number is incorrect or do not exist',
+                code='phone_number',
+            )
+        return phone_number
 
     def clean_full_name(self):
         full_name = self.cleaned_data.get('full_name')
