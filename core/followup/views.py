@@ -108,6 +108,5 @@ class OutreachView(SuccessMessageMixin, CreateView):
 
     def form_invalid(self, form):
         # message
-        print(form.errors)
         messages.error(self.request, 'Invalid Form Field(s). All fields are required.')
         return super().form_invalid(form)
