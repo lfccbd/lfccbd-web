@@ -31,6 +31,8 @@ Also add configuration for Database, Django Defender and Email with SMTP Host.
 
 
     # Database
+    # ensure you install pgcrypto extension
+    # for encryption
     ENGINE = '...'
     NAME = '...'
     HOST = '...'
