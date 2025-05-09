@@ -409,6 +409,15 @@ class FollowUpMembershipForm(forms.ModelForm):
             raise forms.ValidationError('Enter a valid name', code='last_name')
         return last_name
 
+    def clean_birthday(self):
+        birthday = self.cleaned_data.get('birthday')
+
+        if '/' not in birthday and len(birthday.strip()) != 5:
+            raise forms.ValidationError(
+                'Expected "DD/MM" format e.g 21/12', code='birthday'
+            )
+        return birthday
+
     def clean_phone_number(self):
         phone_number = self.cleaned_data.get('phone_number')
         phone_number_check = client.lookups.v2.phone_numbers(phone_number).fetch()
