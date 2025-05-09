@@ -35,7 +35,7 @@ class MemberFollowUp(models.Model):
 	first_name = pgcrypto.EncryptedCharField(max_length=100)
 	last_name = pgcrypto.EncryptedCharField(max_length=100)
 	email = pgcrypto.EncryptedEmailField(null=True, blank=True)
-	birthday = pgcrypto.EncryptedDateField(
+	birthday = pgcrypto.EncryptedCharField(
 		max_length=100, help_text='Birthday (dd/mm) eg. 12/12', null=True, blank=True
 	)
 	phone_number = pgcrypto.EncryptedCharField(max_length=100)

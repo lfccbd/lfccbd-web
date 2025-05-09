@@ -318,7 +318,7 @@ class FollowUpMembershipForm(forms.ModelForm):
         label='Birthday',
         required=True,
         widget=forms.TextInput(
-            attrs={'placeholder': 'YYYY-MM-DD eg. 1999-08-12', 'class': 'form-control'}
+            attrs={'placeholder': 'DD/MM eg. 08/12', 'class': 'form-control'}
         ),
     )
     phone_number = Nh3CleanCharField(
